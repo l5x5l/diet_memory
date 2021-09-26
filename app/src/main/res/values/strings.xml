@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">DietMemory</string>
+    <string name="app_name_multiline">Diet\nMemory</string>
 
     <string name="sign_in">회원가입</string>
     <string name="name">이름</string>
@@ -8,7 +9,8 @@
     <string name="phone_number">전화번호</string>
     <string name="height">키</string>
     <string name="weight">몸무게</string>
-    <string name="exercise_question">일주일에 운동을 얼마나 하시나요?</string>
+    <string name="exercise_question">평균적으로 하루에 운동을 얼마나 하시나요?</string>
+    <string name="check_use_calorie">칼로리 및 영양소 표시 기능을 사용할까요?</string>
     <string name="check_duplicate">중복확인</string>
     <string name="reset">재설정</string>
     <string name="clear">초기화</string>
@@ -17,17 +19,28 @@
     <string name="next">다음</string>
     <string name="prev">이전</string>
     <string name="find_password">비밀번호 찾기</string>
-    <string name="vertical_line">|</string>
     <string name="home">홈</string>
     <string name="calendar">달력</string>
     <string name="setting">설정</string>
     <string name="etc">기타</string>
+    <string name="complete">완료</string>
+    <string name="today_intake">오늘 먹은 음식들</string>
+    <string name="water_intake">물 섭취량</string>
+    <string name="supplements">영양제</string>
 
+    <string name="vertical_line">|</string>
+    <string name="slash">/</string>
+
+    <string name="calorie">칼로리</string>
+    <string name="protein">단백질</string>
+    <string name="fat">지방</string>
+    <string name="carbohydrate">탄수화물</string>
+    
     <!-- exercise question 에 대한 응답 항목 -->
-    <string name="exercise_answer1">1시간 미만</string>
-    <string name="exercise_answer2">1시간~3시간</string>
-    <string name="exercise_answer3">3시간~5시간</string>
-    <string name="exercise_answer4">5시간 이상</string>
+    <string name="exercise_answer1">30분 미만</string>
+    <string name="exercise_answer2">30분~60분</string>
+    <string name="exercise_answer3">60분~120분</string>
+    <string name="exercise_answer4">120분 이상</string>
 
     <!-- 왜 있는지 모를 contentDescription 용 -->
     <string name="contextDescription_main_btn_add">음식, 운동과 같은 데이터를 추가할 때 사용합니다.</string>
