@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="16dp"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_end="16dp"
+        android:orientation="vertical"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_arrow_back"/>
+
+    <View
+        android:id="@+id/v_board"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        android:background="@drawable/shape_stroke_darkgreen"
+        android:layout_marginTop="32dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/v_board"
+        app:layout_constraintStart_toStartOf="@id/v_board"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:textSize="36sp"
+        android:textColor="@color/dark_green"
+        android:text="@string/sign_in"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/line_title"
+        app:layout_constraintBottom_toBottomOf="@id/tv_title"
+        android:text="@string/next"
+        android:textColor="@color/dark_green"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btn_prev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/btn_next"
+        app:layout_constraintBottom_toBottomOf="@id/btn_next"
+        android:layout_marginEnd="16dp"
+        android:text="@string/prev"
+        android:textColor="@color/gray"/>
+
+    <View
+        android:id="@+id/line_title"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@id/v_board"
+        app:layout_constraintEnd_toEndOf="@id/v_board"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/dark_green"/>
+
+    <FrameLayout
+        android:id="@+id/layout_fragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/v_board"
+        app:layout_constraintEnd_toEndOf="@id/v_board"
+        app:layout_constraintTop_toBottomOf="@id/line_title"
+        app:layout_constraintBottom_toBottomOf="@id/v_board"
+        android:layout_margin="16dp"/>
+
+    <View
+        android:layout_width="156dp"
+        android:layout_height="64dp"
+        app:layout_constraintStart_toStartOf="@id/v_board"
+        app:layout_constraintEnd_toEndOf="@id/v_board"
+        app:layout_constraintTop_toTopOf="@id/v_board"
+        android:layout_marginTop="-16dp"
+        android:background="@drawable/shape_orange_clip"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
