@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="16dp"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_end="16dp"
+        android:orientation="vertical"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_setting"
+        android:textColor="@color/dark_green"
+        android:textSize="18sp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_use_calorie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:text="@string/use_calorie"
+        android:layout_marginTop="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_info_use_calorie"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_baseline_help"
+        app:layout_constraintStart_toEndOf="@id/tv_use_calorie"
+        app:layout_constraintTop_toTopOf="@id/tv_use_calorie"
+        app:layout_constraintBottom_toBottomOf="@id/tv_use_calorie"
+        android:layout_marginStart="8dp"/>
+
+    <CheckBox
+        android:id="@+id/cb_calorie_yes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/yes"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_use_calorie"/>
+
+    <CheckBox
+        android:id="@+id/cb_calorie_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no"
+        app:layout_constraintStart_toEndOf="@id/cb_calorie_yes"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintTop_toTopOf="@id/cb_calorie_yes"
+        app:layout_constraintBottom_toBottomOf="@id/cb_calorie_yes"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_change_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change_unit"
+        app:layout_constraintTop_toBottomOf="@id/cb_calorie_yes"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        android:layout_marginTop="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_info_change_unit"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_baseline_help"
+        app:layout_constraintStart_toEndOf="@id/tv_change_unit"
+        app:layout_constraintTop_toTopOf="@id/tv_change_unit"
+        app:layout_constraintBottom_toBottomOf="@id/tv_change_unit"
+        android:layout_marginStart="8dp"/>
+
+    <CheckBox
+        android:id="@+id/cb_change_unit_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toStartOf="@id/cb_change_unit_2"
+        app:layout_constraintTop_toBottomOf="@id/btn_info_change_unit"/>
+
+    <CheckBox
+        android:id="@+id/cb_change_unit_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/cb_change_unit_1"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintTop_toTopOf="@id/cb_change_unit_1"
+        app:layout_constraintBottom_toBottomOf="@id/cb_change_unit_1"/>
+
+    <CheckBox
+        android:id="@+id/cb_change_unit_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toStartOf="@id/cb_change_unit_4"
+        app:layout_constraintTop_toBottomOf="@id/cb_change_unit_1"/>
+
+    <CheckBox
+        android:id="@+id/cb_change_unit_4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/cb_change_unit_3"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintTop_toTopOf="@id/cb_change_unit_3"
+        app:layout_constraintBottom_toBottomOf="@id/cb_change_unit_3"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

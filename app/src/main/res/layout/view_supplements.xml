@@ -13,4 +13,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_supplement"
+        app:layout_constraintTop_toBottomOf="@id/tv_supplements"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
