@@ -15,4 +15,8 @@
         <item name="android:textColor">@color/black</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="FoodCategoryChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="checkedIconEnabled">false</item>
+        <item name="chipBackgroundColor">@color/chip_food_category</item>
+    </style>
 </resources>

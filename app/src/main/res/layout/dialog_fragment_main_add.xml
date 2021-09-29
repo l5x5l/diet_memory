@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="16dp"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_end="16dp"
+        android:orientation="vertical"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/dark_green"
+        android:textSize="18sp"
+        tools:text="9/20 기록 추가"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btn_food"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toStartOf="@id/btn_exercise"
+        android:layout_marginTop="16dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:background="@drawable/shape_stroke_black_radius_4"
+        android:text="@string/food" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btn_exercise"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/btn_food"
+        app:layout_constraintBottom_toBottomOf="@id/btn_food"
+        app:layout_constraintStart_toEndOf="@id/btn_food"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        android:layout_marginStart="4dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text="@string/exercise"
+        android:textColor="@color/gray"
+        android:background="@drawable/shape_stroke_gray_radius_4"/>
+
+    <FrameLayout
+        android:id="@+id/layout_target"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintTop_toBottomOf="@id/btn_food"
+        android:layout_marginTop="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/do_memo"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/layout_target"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_button_activate_1"
+        android:textColor="@color/white"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
