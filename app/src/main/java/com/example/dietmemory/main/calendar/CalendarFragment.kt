@@ -36,6 +36,8 @@ class CalendarFragment : BaseFragment<FragmentMainCalendarBinding>(FragmentMainC
 
     override fun showDateData(year : Int, month : Int, day : Int) {
         (activity as MainActivity).showCustomToastMessage("today : $year, ${month + 1}, $day")
+        binding.viewDaySummary.tvDate.text = getString(R.string.date_form, year, month + 1, day)
+        binding.viewDaySummary.root.visibility = View.VISIBLE
     }
 
     override fun applyData(arrayList: ArrayList<Int>) {

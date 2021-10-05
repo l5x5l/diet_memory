@@ -10,6 +10,7 @@ interface CalendarContract {
 
     interface Presenter : BasePresenter<View> {
         fun tryGetDateData(year : Int, month : Int, day : Int)
+
     }
 
 }

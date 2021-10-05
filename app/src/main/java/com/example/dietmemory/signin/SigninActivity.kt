@@ -7,7 +7,7 @@ import com.example.dietmemory.databinding.ActivitySigninBinding
 import com.example.dietmemory.signin.detail.SigninDetailFragment
 import com.example.dietmemory.signin.personal.SigninPersoncalFragment
 
-class SigninActivity : BaseActivity<ActivitySigninBinding>(ActivitySigninBinding::inflate){
+class SigninActivity : BaseActivity<ActivitySigninBinding>(ActivitySigninBinding::inflate), SigninContract.View{
 
     private val fragmentList = ArrayList<Fragment>()
     private lateinit var currentPage : Fragment
@@ -27,5 +27,11 @@ class SigninActivity : BaseActivity<ActivitySigninBinding>(ActivitySigninBinding
         supportFragmentManager.beginTransaction().hide(fragmentList[1])
         supportFragmentManager.beginTransaction().add(binding.layoutFragment.id, fragmentList[0]).commit()
         currentPage = fragmentList[0]
+    }
+
+    override fun changeEmailBtn(confirm: Boolean) {
+        if (confirm){
+
+        }
     }
 }

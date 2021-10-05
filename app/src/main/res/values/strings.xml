@@ -65,7 +65,9 @@
     <string name="protein">단백질</string>
     <string name="fat">지방</string>
     <string name="carbohydrate">탄수화물</string>
-    
+
+    <string name="date_form">%d년 %d월 %d일</string>
+
     <!-- exercise question 에 대한 응답 항목 -->
     <string name="exercise_answer1">30분 미만</string>
     <string name="exercise_answer2">30분~60분</string>

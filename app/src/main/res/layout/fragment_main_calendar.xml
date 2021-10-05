@@ -74,6 +74,7 @@
             layout="@layout/view_day_summary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintTop_toBottomOf="@id/rv_calendar"

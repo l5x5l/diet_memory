@@ -20,6 +20,7 @@
         <activity android:name=".splash.SplashActivity">
         </activity>
         <activity android:name=".login.LoginActivity"/>
+        <activity android:name=".add.AddActivity"/>
     </application>
 
 </manifest>

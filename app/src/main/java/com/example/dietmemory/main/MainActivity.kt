@@ -1,8 +1,10 @@
 package com.example.dietmemory.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.dietmemory.R
+import com.example.dietmemory.add.AddActivity
 import com.example.dietmemory.config.BaseActivity
 import com.example.dietmemory.databinding.ActivityMainBinding
 import com.example.dietmemory.main.calendar.CalendarFragment
@@ -64,6 +66,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 }
             }
             true
+        }
+        binding.btnAdd.setOnClickListener {
+            startActivity(Intent(this, AddActivity::class.java))
+            overridePendingTransition(R.anim.from_bottom, R.anim.none)
         }
     }
 }
