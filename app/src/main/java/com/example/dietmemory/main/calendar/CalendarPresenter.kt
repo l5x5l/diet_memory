@@ -11,6 +11,12 @@ class CalendarPresenter : CalendarContract.Presenter {
         calendarView!!.showDateData(year, month, day)
     }
 
+    override fun tryGetMonthData(year: Int, month: Int) {
+        // 원래 서버로부터 통신하여 가져와야 한다.
+        val tempDataList = arrayListOf(0,0,0,1,1,1,2,0,1,2,0,2,1,1)
+        calendarView!!.applyMonthData(year, month, tempDataList)
+    }
+
     override fun takeView(inputView: CalendarContract.View) {
         calendarView = inputView
     }
@@ -19,9 +25,9 @@ class CalendarPresenter : CalendarContract.Presenter {
         calendarView = null
     }
 
-    // 해당 달에 대한 데이터 적용
+    /*// 해당 달에 대한 데이터 적용
     fun getCalendar(){
         val tempDataList = arrayListOf(0,0,0,1,1,1,2,0,1,2,0,2,1,1)
-        calendarView!!.applyData(tempDataList)
-    }
+        calendarView!!.applyMonthData(tempDataList)
+    }*/
 }

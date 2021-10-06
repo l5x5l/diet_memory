@@ -77,6 +77,7 @@ class CalendarAdapter(private val context : Context, private val presenter : Cal
 
     private fun refreshView(calendar: Calendar){
         notifyDataSetChanged()
+        presenter.tryGetMonthData(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH))
         // presenter 호출해 rv 외 요소 수정
     }
 
