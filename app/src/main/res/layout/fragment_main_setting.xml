@@ -50,47 +50,13 @@
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             android:layout_marginTop="16dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_detail"
+        <FrameLayout
+            android:id="@+id/layout_target"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/border_setting"
             app:layout_constraintStart_toStartOf="@id/guide_start"
-            app:layout_constraintEnd_toEndOf="@id/guide_end"
-            app:layout_constraintTop_toBottomOf="@id/border_setting"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/btn_withdrawal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/guide_end"
-            app:layout_constraintTop_toBottomOf="@id/rv_detail"
-            android:layout_marginTop="16dp"
-            android:text="@string/withdrawal"
-            android:textSize="12sp"
-            android:textColor="@color/dark_green"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/vertical_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@id/btn_withdrawal"
-            app:layout_constraintTop_toTopOf="@id/btn_withdrawal"
-            app:layout_constraintBottom_toBottomOf="@id/btn_withdrawal"
-            android:layout_marginEnd="4dp"
-            android:textSize="12sp"
-            android:textColor="@color/dark_green"
-            android:text="@string/vertical_line"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/btn_withdrawal"
-            app:layout_constraintBottom_toBottomOf="@id/btn_withdrawal"
-            app:layout_constraintEnd_toStartOf="@id/vertical_line"
-            android:layout_marginEnd="4dp"
-            android:textSize="12sp"
-            android:textColor="@color/dark_green"
-            android:text="@string/logout"/>
+            app:layout_constraintEnd_toEndOf="@id/guide_end"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

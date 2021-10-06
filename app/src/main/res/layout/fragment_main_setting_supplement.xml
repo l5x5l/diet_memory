@@ -8,21 +8,21 @@
         android:id="@+id/guide_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_begin="16dp"
+        app:layout_constraintGuide_begin="0dp"
         android:orientation="vertical"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_end="16dp"
+        app:layout_constraintGuide_end="0dp"
         android:orientation="vertical"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/restrict_food_setting"
+        android:text="@string/supplement_and_medicine"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         android:textColor="@color/dark_green"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toTopOf="@id/tv_title"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_restrict_food"
+        android:id="@+id/rv_supplement"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/guide_start"
@@ -58,12 +58,12 @@
         android:layout_marginTop="16dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/btn_add_restrict_food"
+        android:id="@+id/btn_add_supplement"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
-        app:layout_constraintTop_toBottomOf="@id/rv_restrict_food"
+        app:layout_constraintTop_toBottomOf="@id/rv_supplement"
         android:layout_marginTop="16dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"

@@ -66,6 +66,7 @@
     <string name="fat">지방</string>
     <string name="carbohydrate">탄수화물</string>
 
+    <string name="date_form_partial">%d년 %d월</string>
     <string name="date_form">%d년 %d월 %d일</string>
     <string name="value_scale_form">%d%s</string>
 
