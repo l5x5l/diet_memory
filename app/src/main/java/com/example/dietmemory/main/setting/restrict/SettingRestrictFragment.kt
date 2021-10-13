@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.dietmemory.databinding.FragmentMainSettingRestrictBinding
-import com.example.dietmemory.main.setting.SettingRvView
+import com.example.dietmemory.main.setting.SettingDetailContract
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class SettingRestrictFragment(private val inputView : SettingRvView) : BottomSheetDialogFragment() {
+class SettingRestrictFragment : BottomSheetDialogFragment(), SettingDetailContract.View {
     private var _binding : FragmentMainSettingRestrictBinding ?= null
     private val binding get() = _binding!!
 
@@ -17,16 +17,12 @@ class SettingRestrictFragment(private val inputView : SettingRvView) : BottomShe
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.btnCancel.setOnClickListener {
-            inputView.showFragment(4)
-        }
-    }
-
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
+    }
+
+    override fun save() {
+        // some save function
     }
 }

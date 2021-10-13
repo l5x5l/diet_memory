@@ -24,7 +24,7 @@ class SettingAdapter(context : Context, private val view : SettingRvView, privat
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.layoutMain.setOnClickListener {
-            view.showFragment(position)
+            view.showFragment(position, dataList[position])
         }
         holder.text.text = dataList[position]
     }

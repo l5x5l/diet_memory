@@ -62,44 +62,48 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_password"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         tools:text="**********"
         android:background="@android:color/transparent"
         app:layout_constraintTop_toTopOf="@id/tv_password"
         app:layout_constraintStart_toEndOf="@id/tv_password"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
         android:layout_marginStart="16dp"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_phone_number"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         tools:text="01099999999"
         android:background="@android:color/transparent"
         app:layout_constraintTop_toTopOf="@id/tv_phone_number"
-        app:layout_constraintStart_toStartOf="@id/et_password"/>
+        app:layout_constraintStart_toStartOf="@id/et_password"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_email"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         tools:text="testEmail@naver.com"
         android:background="@android:color/transparent"
         app:layout_constraintTop_toTopOf="@id/tv_email"
-        app:layout_constraintStart_toStartOf="@id/et_phone_number"/>
+        app:layout_constraintStart_toStartOf="@id/et_phone_number"
+        app:layout_constraintEnd_toStartOf="@id/btn_check_duplicate"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         tools:text="가나다"
         android:background="@android:color/transparent"
         app:layout_constraintTop_toTopOf="@id/tv_name"
-        app:layout_constraintStart_toStartOf="@id/et_phone_number"/>
+        app:layout_constraintStart_toStartOf="@id/et_phone_number"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/btn_check_duplicate"
@@ -153,24 +157,63 @@
         android:text="@string/weight"
         android:textSize="18sp"/>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_weight"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        android:layout_marginTop="16dp"
+        android:text="@string/gender"
+        android:textSize="18sp"/>
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_height"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         tools:text="180"
+        android:inputType="numberDecimal"
         android:background="@android:color/transparent"
         app:layout_constraintTop_toTopOf="@id/tv_height"
-        app:layout_constraintStart_toStartOf="@id/et_phone_number"/>
+        app:layout_constraintStart_toStartOf="@id/et_phone_number"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_weight"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         tools:text="67"
         android:background="@android:color/transparent"
         app:layout_constraintTop_toTopOf="@id/tv_weight"
-        app:layout_constraintStart_toStartOf="@id/et_phone_number"/>
+        app:layout_constraintStart_toStartOf="@id/et_phone_number"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"/>
+
+    <RadioGroup
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/et_phone_number"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintTop_toTopOf="@id/tv_gender"
+        app:layout_constraintBottom_toBottomOf="@id/tv_gender"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="@string/man"/>
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="@string/woman"/>
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
