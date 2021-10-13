@@ -7,7 +7,7 @@ class SigninPresenter : SigninContract.Presenter {
     override fun tryEmailConfirm() {
         // retrofit 이용해서 서버 통신 후 결과
         // if response is successful
-        view!!.changeEmailBtn(true)
+        view!!.applyEmailConfirmResult(true)
     }
 
     override fun trySendSignInData() {

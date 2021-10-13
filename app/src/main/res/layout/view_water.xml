@@ -16,8 +16,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btn_mini_cup"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:src="@drawable/solo_cup"
         android:layout_marginTop="16dp"
         android:padding="8dp"
@@ -27,8 +27,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btn_solo_cup"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:src="@drawable/solo_cup"
         android:padding="8dp"
         android:background="@drawable/shape_stroke_black_radius_max"
@@ -39,8 +39,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btn_bottle"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:src="@drawable/plastic_bottle"
         android:padding="8dp"
         android:background="@drawable/shape_stroke_black_radius_max"

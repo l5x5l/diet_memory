@@ -4,7 +4,7 @@ import com.example.dietmemory.config.BasePresenter
 
 interface SigninContract {
     interface View {
-        fun changeEmailBtn(confirm : Boolean)
+        fun applyEmailConfirmResult(confirm : Boolean)
     }
     interface Presenter : BasePresenter<View>{
         fun tryEmailConfirm()
