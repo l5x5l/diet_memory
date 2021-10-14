@@ -16,7 +16,7 @@ class LoginPresenter : LoginContract.Presenter {
     // network
     override fun tryLogin(loginData: LoginData) {
         val loginRetrofitInterface = GlobalApplication.sRetrofit.create(LoginRetrofitInterface::class.java)
-        loginRetrofitInterface.postLogin(loginData).enqueue(object : Callback<LoginResponse>{
+        loginRetrofitInterface.postLogin2(loginData.email, loginData.pwd).enqueue(object : Callback<LoginResponse>{
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful){
                     if (response.body()?.isSuccess!!){

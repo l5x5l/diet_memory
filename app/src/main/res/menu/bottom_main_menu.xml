@@ -23,8 +23,8 @@
         android:icon="@drawable/ic_baseline_settings"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/bottom_etc"
-        android:title="@string/etc"
-        android:icon="@drawable/ic_baseline_apps"
+        android:id="@+id/bottom_exercise"
+        android:title="@string/exercise"
+        android:icon="@drawable/exercise"
         app:showAsAction="ifRoom"/>
 </menu>

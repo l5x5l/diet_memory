@@ -61,6 +61,8 @@
     <string name="snack">간식</string>
     <string name="time">시간</string>
     <string name="total_consumption_calorie">총 소요 칼로리</string>
+    <string name="today_consumption_calorie">오늘 소비한 칼로리</string>
+    <string name="today_exercise">오늘 한 운동</string>
 
     <string name="yes">네</string>
     <string name="no">아니요</string>

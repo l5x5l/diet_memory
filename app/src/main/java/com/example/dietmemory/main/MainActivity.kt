@@ -8,7 +8,7 @@ import com.example.dietmemory.add.AddActivity
 import com.example.dietmemory.config.BaseActivity
 import com.example.dietmemory.databinding.ActivityMainBinding
 import com.example.dietmemory.main.calendar.CalendarFragment
-import com.example.dietmemory.main.etc.EtcFragment
+import com.example.dietmemory.main.exercise.ExerciseFragment
 import com.example.dietmemory.main.home.HomeFragment
 import com.example.dietmemory.main.setting.SettingFragment
 
@@ -17,7 +17,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private var homeFragment : HomeFragment ?= null
     private var calendarFragment : CalendarFragment ?= null
     private var settingFragment : SettingFragment ?= null
-    private var etcFragment : EtcFragment ?= null
+    private var exerciseFragment : ExerciseFragment ?= null
     private lateinit var currentFragment : Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,15 +54,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     }
                     currentFragment = settingFragment!!
                 }
-                R.id.bottom_etc -> {
+                R.id.bottom_exercise -> {
                     supportFragmentManager.beginTransaction().hide(currentFragment).commit()
-                    if (etcFragment == null){
-                        etcFragment = EtcFragment()
-                        supportFragmentManager.beginTransaction().add(binding.layoutFragment.id, etcFragment!!).commit()
+                    if (exerciseFragment == null){
+                        exerciseFragment = ExerciseFragment()
+                        supportFragmentManager.beginTransaction().add(binding.layoutFragment.id, exerciseFragment!!).commit()
                     } else {
-                        supportFragmentManager.beginTransaction().show(etcFragment!!).commit()
+                        supportFragmentManager.beginTransaction().show(exerciseFragment!!).commit()
                     }
-                    currentFragment = etcFragment!!
+                    currentFragment = exerciseFragment!!
                 }
             }
             true

@@ -23,6 +23,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
         binding.btnLogin.setOnClickListener {
             presenter.tryLogin(LoginData( binding.etEmail.text.toString(), binding.etPassword.text.toString()))
+            //onSuccessLogin() //임시로 설정
         }
     }
 
