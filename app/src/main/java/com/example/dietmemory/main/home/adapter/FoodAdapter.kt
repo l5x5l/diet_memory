@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.dietmemory.data.FoodData
 import com.example.dietmemory.databinding.ItemMainHomeFoodBinding
+import com.example.dietmemory.main.home.models.FoodData
 
 class FoodAdapter(private val context: Context) : RecyclerView.Adapter<FoodAdapter.ViewHolder>(){
 
@@ -32,9 +32,9 @@ class FoodAdapter(private val context: Context) : RecyclerView.Adapter<FoodAdapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Glide.with(context).load(dataList[position].foodImage).into(holder.image)
+        Glide.with(context).load(dataList[position].fileURL).into(holder.image)
         holder.foodName.text = dataList[position].foodName
-        holder.time.text = dataList[position].time
+        holder.time.text = dataList[position].time.toString()
     }
 
     override fun getItemCount(): Int = dataList.size

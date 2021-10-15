@@ -9,6 +9,7 @@ import com.example.dietmemory.data.FoodData
 import com.example.dietmemory.databinding.FragmentMainHomeBinding
 import com.example.dietmemory.main.MainActivity
 import com.example.dietmemory.main.home.adapter.FoodAdapter
+import com.example.dietmemory.main.home.models.MainResponse
 
 class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBinding::bind, R.layout.fragment_main_home), HomeContract.View {
 
@@ -34,8 +35,12 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         super.onDestroyView()
     }
 
-    override fun applyTodayData(dataList : ArrayList<FoodData>) {
-        (binding.rvTodayIntake.adapter as FoodAdapter).applyData(dataList)
+    override fun applyTodayData(dataList : MainResponse) {
+        (binding.rvTodayIntake.adapter as FoodAdapter).applyData(dataList.Food)
+        binding.viewIntakeInfo.tvIntakeCalorie.text = dataList.Data.enCalo.toString()
+        binding.viewIntakeInfo.tvIntakeCarbohydrate.text = getString(R.string.intake_slash_target, dataList.Data.enCarbo, dataList.Data.enCarbo)
+        binding.viewIntakeInfo.tvIntakeProtein.text = getString(R.string.intake_slash_target, dataList.Data.enProtein, dataList.Data.enProtein)
+        binding.viewIntakeInfo.tvIntakeFat.text = getString(R.string.intake_slash_target, dataList.Data.enFat, dataList.Data.enFat)
     }
 
     override fun applyWaterIntake(intake: Int, scaleType: Int) {
