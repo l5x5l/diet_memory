@@ -20,6 +20,7 @@ class LoginPresenter : LoginContract.Presenter {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful){
                     if (response.body()?.isSuccess!!){
+                        GlobalApplication.globalSharedPreferences.edit().putString(GlobalApplication.X_ACCESS_TOKEN, response.body()?.access_token).apply()
                         view.onSuccessLogin()
                     } else {
                         view.onFailureLogin()

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dietmemory.R
 import com.example.dietmemory.config.BaseFragment
+import com.example.dietmemory.config.GlobalApplication
 import com.example.dietmemory.databinding.FragmentMainSettingBaseBinding
 import com.example.dietmemory.main.MainActivity
 import com.example.dietmemory.main.setting.SettingRvView
@@ -25,5 +26,10 @@ class SettingBaseFragment(private val inputView : SettingRvView) : BaseFragment<
 
         binding.rvDetail.layoutManager = LinearLayoutManager(activity as MainActivity, LinearLayoutManager.VERTICAL, false)
         binding.rvDetail.adapter = SettingAdapter(activity as MainActivity, inputView, settingList)
+
+        binding.btnLogout.setOnClickListener {
+            GlobalApplication.globalSharedPreferences.edit().remove(GlobalApplication.X_ACCESS_TOKEN).apply()
+            (activity as MainActivity).afterLogout()
+        }
     }
 }

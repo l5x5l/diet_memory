@@ -7,6 +7,7 @@ import com.example.dietmemory.R
 import com.example.dietmemory.add.AddActivity
 import com.example.dietmemory.config.BaseActivity
 import com.example.dietmemory.databinding.ActivityMainBinding
+import com.example.dietmemory.login.LoginActivity
 import com.example.dietmemory.main.calendar.CalendarFragment
 import com.example.dietmemory.main.exercise.ExerciseFragment
 import com.example.dietmemory.main.home.HomeFragment
@@ -71,5 +72,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             startActivity(Intent(this, AddActivity::class.java))
             overridePendingTransition(R.anim.from_bottom, R.anim.none)
         }
+    }
+
+    fun afterLogout() {
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 }
