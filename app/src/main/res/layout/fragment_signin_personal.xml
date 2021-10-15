@@ -191,6 +191,7 @@
         app:layout_constraintEnd_toEndOf="@id/guide_end"/>
 
     <RadioGroup
+        android:id="@+id/rg_sex"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/et_phone_number"
@@ -200,6 +201,7 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_man"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="0dp"
@@ -207,6 +209,7 @@
             android:text="@string/man"/>
 
         <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_woman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

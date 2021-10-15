@@ -2,6 +2,7 @@ package com.example.dietmemory.signin
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.dietmemory.R
@@ -17,9 +18,9 @@ class SigninActivity : BaseActivity<ActivitySigninBinding>(ActivitySigninBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        presenter.takeView(this)
 
         setFragments()
-        presenter.takeView(this)
 
         setButtons()
 
@@ -55,8 +56,8 @@ class SigninActivity : BaseActivity<ActivitySigninBinding>(ActivitySigninBinding
     }
 
     private fun setFragments() {
-        fragmentList.add(SigninPersonalFragment())
-        fragmentList.add(SigninDetailFragment())
+        fragmentList.add(SigninPersonalFragment(presenter))
+        fragmentList.add(SigninDetailFragment(presenter))
 
         supportFragmentManager.beginTransaction().add(binding.layoutFragment.id, fragmentList[1]).commit()
         supportFragmentManager.beginTransaction().hide(fragmentList[1]).commit()
@@ -64,8 +65,18 @@ class SigninActivity : BaseActivity<ActivitySigninBinding>(ActivitySigninBinding
     }
 
     override fun applyEmailConfirmResult(confirm: Boolean) {
-        if (confirm){
+        if (!confirm){
+            Toast.makeText(this, "이메일 확인 완료!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "중복된 이메일입니다", Toast.LENGTH_SHORT).show()
+        }
+    }
 
+    override fun tryEmailResult(result: Boolean) {
+        if (result) {
+            finish()
+        } else {
+            Toast.makeText(this, "정보를 모두 입력해주세요!", Toast.LENGTH_SHORT).show()
         }
     }
 }
