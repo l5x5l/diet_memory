@@ -1,4 +1,4 @@
-package com.example.dietmemory.add.food
+package com.example.dietmemory.add.exercise
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +8,9 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.dietmemory.R
 import com.example.dietmemory.config.BaseFragment
-import com.example.dietmemory.databinding.FragmentAddFoodBinding
+import com.example.dietmemory.databinding.FragmentAddExerciseBinding
 
-class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding::bind, R.layout.fragment_add_food) {
+class ExerciseFragment : BaseFragment<FragmentAddExerciseBinding>(FragmentAddExerciseBinding::bind, R.layout.fragment_add_exercise) {
 
     private val getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
         result : ActivityResult -> binding.ivPhoto.setImageURI(result.data?.data)

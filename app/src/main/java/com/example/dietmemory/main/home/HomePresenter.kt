@@ -2,7 +2,6 @@ package com.example.dietmemory.main.home
 
 import android.util.Log
 import com.example.dietmemory.config.GlobalApplication
-import com.example.dietmemory.data.FoodData
 import com.example.dietmemory.main.home.models.MainResponse
 import com.example.dietmemory.main.home.models.postMainData
 import retrofit2.Call
@@ -23,7 +22,7 @@ class HomePresenter : HomeContract.Presenter {
                     Log.d("main success", response.body()!!.message)
                     view!!.applyTodayData(response.body()!!)
                 } else {
-                    Log.d("main fail", response.body()!!.message)
+                    Log.d("main fail", "server's error?")
                 }
             }
             override fun onFailure(call: Call<MainResponse>, t: Throwable) {
@@ -31,9 +30,6 @@ class HomePresenter : HomeContract.Presenter {
             }
         })
 
-        //val tempDataList = arrayListOf(FoodData("라면", "점심", "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202108/13/a6f247a0-1d66-47a5-9dae-980e1f9c4eba.jpg"))
-
-        //view!!.applyTodayData(tempDataList)
         view!!.applyWaterIntake(model.intakeWater(0), 0)
     }
 
