@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1044332749296",
+    "project_id": "dietmemory-65737",
+    "storage_bucket": "dietmemory-65737.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044332749296:android:8deab7805e342ce5417d35",
+        "android_client_info": {
+          "package_name": "com.example.dietmemory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1044332749296-tbtr8bphed8ctf2a71o5ubm93k8ivfbp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC58wWg_NQqg4RDcBo3WhOdHwW583Q4YM8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1044332749296-tbtr8bphed8ctf2a71o5ubm93k8ivfbp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
