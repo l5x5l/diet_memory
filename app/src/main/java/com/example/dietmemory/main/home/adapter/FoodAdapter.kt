@@ -11,6 +11,7 @@ import com.example.dietmemory.main.home.models.FoodData
 class FoodAdapter(private val context: Context) : RecyclerView.Adapter<FoodAdapter.ViewHolder>(){
 
     private val dataList = ArrayList<FoodData>()
+    private val mealTime = arrayListOf("아침", "점심", "저녁", "아점", "점저", "간식")
     private lateinit var binding : ItemMainHomeFoodBinding
     private val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
@@ -34,7 +35,7 @@ class FoodAdapter(private val context: Context) : RecyclerView.Adapter<FoodAdapt
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(context).load(dataList[position].fileURL).into(holder.image)
         holder.foodName.text = dataList[position].foodName
-        holder.time.text = dataList[position].time.toString()
+        holder.time.text = mealTime[dataList[position].time]//dataList[position].time.toString()
     }
 
     override fun getItemCount(): Int = dataList.size

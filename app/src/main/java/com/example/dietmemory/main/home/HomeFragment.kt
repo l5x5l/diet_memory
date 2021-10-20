@@ -35,12 +35,13 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         super.onDestroyView()
     }
 
-    override fun applyTodayData(dataList : MainResponse) {
+    override fun applyTodayData(dataList : MainResponse, totalCal : Int, totalCar : Int, totalFat : Int, totalPro : Int) {
         (binding.rvTodayIntake.adapter as FoodAdapter).applyData(dataList.Food)
-        binding.viewIntakeInfo.tvIntakeCalorie.text = dataList.Data.enCalo.toString()
-        binding.viewIntakeInfo.tvIntakeCarbohydrate.text = getString(R.string.intake_slash_target, dataList.Data.enCarbo, dataList.Data.enCarbo)
-        binding.viewIntakeInfo.tvIntakeProtein.text = getString(R.string.intake_slash_target, dataList.Data.enProtein, dataList.Data.enProtein)
-        binding.viewIntakeInfo.tvIntakeFat.text = getString(R.string.intake_slash_target, dataList.Data.enFat, dataList.Data.enFat)
+        binding.viewIntakeInfo.tvTargetCalorie.text = dataList.Data.enCalo.toString()
+        binding.viewIntakeInfo.tvIntakeCalorie.text = totalCal.toString()
+        binding.viewIntakeInfo.tvIntakeCarbohydrate.text = getString(R.string.intake_slash_target, totalCar, dataList.Data.enCarbo)
+        binding.viewIntakeInfo.tvIntakeProtein.text = getString(R.string.intake_slash_target, totalPro, dataList.Data.enProtein)
+        binding.viewIntakeInfo.tvIntakeFat.text = getString(R.string.intake_slash_target, totalFat, dataList.Data.enFat)
     }
 
     override fun applyWaterIntake(intake: Int, scaleType: Int) {

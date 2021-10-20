@@ -20,7 +20,20 @@ class HomePresenter : HomeContract.Presenter {
             override fun onResponse(call: Call<MainResponse>, response: Response<MainResponse>) {
                 if (response.isSuccessful){
                     Log.d("main success", response.body()!!.message)
-                    view!!.applyTodayData(response.body()!!)
+
+                    var totalCal = 0
+                    var totalCar = 0
+                    var totalFat = 0
+                    var totalPro = 0
+
+                    for (food in response.body()!!.Food){
+                        totalCal += food.calo
+                        totalCar += food.carbo
+                        totalFat += food.fat
+                        totalPro += food.protein
+                    }
+
+                    view!!.applyTodayData(response.body()!!, totalCal, totalCar, totalFat, totalPro)
                 } else {
                     Log.d("main fail", "server's error?")
                 }
