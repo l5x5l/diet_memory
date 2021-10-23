@@ -78,4 +78,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }
+
+
+    // 설정 페이지에서 app 설정 변경완료시 호출될 예정
+    fun applyShowCal() {
+        if (homeFragment != null) homeFragment!!.applyShowCal()
+    }
 }

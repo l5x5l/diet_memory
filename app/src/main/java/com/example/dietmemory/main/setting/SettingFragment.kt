@@ -2,13 +2,9 @@ package com.example.dietmemory.main.setting
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dietmemory.R
 import com.example.dietmemory.config.BaseFragment
 import com.example.dietmemory.databinding.FragmentMainSettingBinding
-import com.example.dietmemory.main.MainActivity
-import com.example.dietmemory.main.setting.adapter.SettingAdapter
 import com.example.dietmemory.main.setting.app.SettingAppFragment
 import com.example.dietmemory.main.setting.base.SettingBaseFragment
 import com.example.dietmemory.main.setting.physical.SettingPhysicalFragment
@@ -35,10 +31,6 @@ class SettingFragment : BaseFragment<FragmentMainSettingBinding>(FragmentMainSet
             }
             showFragment(4, "")
         }
-    }
-
-    fun changeDetailTv(detail : String){
-        binding.tvDetail.text = detail
     }
 
     override fun showFragment(idx: Int, detail : String) {

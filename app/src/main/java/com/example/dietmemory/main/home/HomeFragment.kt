@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dietmemory.R
 import com.example.dietmemory.config.BaseFragment
-import com.example.dietmemory.data.FoodData
+import com.example.dietmemory.config.GlobalApplication
 import com.example.dietmemory.databinding.FragmentMainHomeBinding
 import com.example.dietmemory.main.MainActivity
 import com.example.dietmemory.main.home.adapter.FoodAdapter
@@ -48,5 +48,17 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         binding.viewWater.tvIntakeWater.text = (activity as MainActivity).getString(R.string.value_scale_form, intake, "ml")
     }
 
+    // 섫정에서 칼로리 표시 유무를 변경한 경우
+    fun applyShowCal(){
+        if (GlobalApplication.globalSharedPreferences.getBoolean(GlobalApplication.SHOW_CAL, true)){
+            binding.viewIntakeInfo.cvNotUseCalorie.visibility = View.GONE
+            binding.viewIntakeInfo.cvCalorie.visibility = View.VISIBLE
+            binding.viewIntakeInfo.cvNutrient.visibility = View.VISIBLE
+        } else {
+            binding.viewIntakeInfo.cvNotUseCalorie.visibility = View.VISIBLE
+            binding.viewIntakeInfo.cvCalorie.visibility = View.GONE
+            binding.viewIntakeInfo.cvNutrient.visibility = View.GONE
+        }
+    }
 
 }

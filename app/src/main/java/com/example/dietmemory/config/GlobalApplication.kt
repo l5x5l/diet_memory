@@ -13,6 +13,8 @@ class GlobalApplication : Application() {
         val API_URL = "https://diet-plan.run.goorm.io/"
         lateinit var globalSharedPreferences : SharedPreferences
         const val X_ACCESS_TOKEN = "X-ACCESS-TOKEN"
+        const val SHOW_CAL = "SHOW-CALORIE"
+        const val UNIT_TYPE = "UNIT-TYPE"
         const val STRING_DEFAULT = "__DEFAULT__"
         lateinit var sRetrofit: Retrofit
     }
@@ -21,7 +23,6 @@ class GlobalApplication : Application() {
         super.onCreate()
         initRetrofitInstance()
         globalSharedPreferences = applicationContext.getSharedPreferences("dietMemory", MODE_PRIVATE)
-
     }
 
     private fun initRetrofitInstance() {
