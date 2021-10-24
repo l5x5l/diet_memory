@@ -93,6 +93,7 @@
     <string name="unit_type3">kg/oz</string>
     <string name="unit_type4">lbs/oz</string>
 
+    <string name="withdrawal_message">회원탈퇴를 원하시면\n"회원탈퇴"를 입력해주세요</string>
 
     <string name="calendar_hint">달력을 눌러 해당 날의 \n식단을 확인해보세요!</string>
     <string name="diet_empty">아직 기록된 식단이 없어요</string>
