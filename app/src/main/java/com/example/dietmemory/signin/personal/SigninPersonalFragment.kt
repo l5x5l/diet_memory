@@ -3,9 +3,9 @@ package com.example.dietmemory.signin.personal
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.util.Patterns
 import android.view.View
-import android.widget.RadioGroup
 import androidx.core.content.ContextCompat
 import com.example.dietmemory.R
 import com.example.dietmemory.config.BaseFragment
@@ -28,6 +28,13 @@ class SigninPersonalFragment(private val presenter : SigninPresenter) : BaseFrag
             }
         }
 
+        binding.btnCheckDuplicate.setOnClickListener {
+            if (checkEmail(binding.etEmail.text.toString())){
+                Log.d("email", binding.etEmail.text.toString())
+                presenter.tryEmailConfirm(binding.etEmail.text.toString())
+            }
+        }
+
     }
 
     private fun setEditText() {
@@ -37,10 +44,14 @@ class SigninPersonalFragment(private val presenter : SigninPresenter) : BaseFrag
             override fun afterTextChanged(s: Editable?) {
                 if (checkEmail(s.toString())) {
                     binding.etEmail.setTextColor(ContextCompat.getColor(activity as SigninActivity, R.color.dark_green))
-                    presenter.setEmail(s.toString())
+                    binding.btnCheckDuplicate.background = ContextCompat.getDrawable(activity as SigninActivity, R.drawable.shape_stroke_darkgreen_radius_4)
+                    binding.btnCheckDuplicate.setTextColor(ContextCompat.getColor(activity as SigninActivity, R.color.dark_green))
+                    presenter.setEmail(GlobalApplication.STRING_DEFAULT) // 인증은 한 상태에서 이메일을 변경할 경우 자동으로 초기화
                 }
                 else {
                     binding.etEmail.setTextColor(ContextCompat.getColor(activity as SigninActivity, R.color.orange))
+                    binding.btnCheckDuplicate.background = ContextCompat.getDrawable(activity as SigninActivity, R.drawable.shape_stroke_gray_radius_4)
+                    binding.btnCheckDuplicate.setTextColor(ContextCompat.getColor(activity as SigninActivity, R.color.gray))
                     presenter.setEmail(GlobalApplication.STRING_DEFAULT)
                 }
             }
@@ -123,6 +134,28 @@ class SigninPersonalFragment(private val presenter : SigninPresenter) : BaseFrag
                 }
             }
         })
+        binding.etAge.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val age = s.toString().toIntOrNull()
+                if (age != null){
+                    if (checkAge(age)){
+                        binding.etAge.setTextColor(ContextCompat.getColor(activity as SigninActivity, R.color.dark_green))
+                        presenter.setAge(age)
+                    } else {
+                        binding.etAge.setTextColor(ContextCompat.getColor(activity as SigninActivity, R.color.orange))
+                        presenter.setAge(-1)
+                    }
+                } else {
+                    binding.etAge.setTextColor(ContextCompat.getColor(activity as SigninActivity, R.color.orange))
+                    presenter.setAge(-1)
+                }
+            }
+
+        })
     }
 
     // set EditText conditions
@@ -148,5 +181,9 @@ class SigninPersonalFragment(private val presenter : SigninPresenter) : BaseFrag
 
     private fun checkWeight(weight: Int) : Boolean {
         return (weight in 20..1000)
+    }
+
+    private fun checkAge(age : Int) : Boolean {
+        return (age in 7..130)
     }
 }

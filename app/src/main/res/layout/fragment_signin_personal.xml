@@ -115,9 +115,9 @@
         android:paddingEnd="8dp"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
-        android:background="@drawable/shape_stroke_darkgreen_radius_4"
+        android:background="@drawable/shape_stroke_gray_radius_4"
         android:textSize="14sp"
-        android:textColor="@color/dark_green"
+        android:textColor="@color/gray"
         android:text="@string/check_duplicate"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -218,5 +218,26 @@
             android:text="@string/woman"/>
 
     </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_gender"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:text="@string/age"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_age"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/et_phone_number"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintTop_toTopOf="@id/tv_age"
+        android:background="@android:color/transparent"
+        android:textSize="18sp"
+        tools:text="24"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,15 +65,16 @@ class SigninActivity : BaseActivity<ActivitySigninBinding>(ActivitySigninBinding
     }
 
     override fun applyEmailConfirmResult(confirm: Boolean) {
-        if (!confirm){
+        if (confirm){
             Toast.makeText(this, "이메일 확인 완료!", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this, "중복된 이메일입니다", Toast.LENGTH_SHORT).show()
         }
     }
 
-    override fun tryEmailResult(result: Boolean) {
+    override fun applySignUpResult(result: Boolean) {
         if (result) {
+            Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
             finish()
         } else {
             Toast.makeText(this, "정보를 모두 입력해주세요!", Toast.LENGTH_SHORT).show()
