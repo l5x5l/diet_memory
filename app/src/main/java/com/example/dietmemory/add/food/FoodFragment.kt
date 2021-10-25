@@ -13,6 +13,7 @@ import com.example.dietmemory.R
 import com.example.dietmemory.add.food.models.FoodRecordData
 import com.example.dietmemory.config.BaseFragment
 import com.example.dietmemory.databinding.FragmentAddFoodBinding
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
@@ -34,8 +35,11 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
             val imageRef = storage.reference.child("images/").child(fileName)
 
             imageRef.putFile(uri!!).addOnSuccessListener {
-                Log.d("image upload", "success")
-                presenter.tryGetFoodRecord(fileName)
+                imageRef.downloadUrl.addOnSuccessListener{
+                    Log.d("image upload", it.toString())
+                    presenter.tryGetFoodRecord(it.toString())
+                }
+                //presenter.tryGetFoodRecord(fileName)
             }.addOnFailureListener{
                 Log.d("image upload", "failure")
             }
@@ -58,8 +62,10 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
 
             val uploadTask = imageRef.putBytes(data)
             uploadTask.addOnSuccessListener {
-                Log.d("image upload", "success")
-                presenter.tryGetFoodRecord(fileName)
+                imageRef.downloadUrl.addOnSuccessListener {
+                    Log.d("image upload", it.toString())
+                    presenter.tryGetFoodRecord(it.toString())
+                }
             }.addOnFailureListener {
                 Log.d("image upload", "failure")
             }
