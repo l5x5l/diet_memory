@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dietmemory.R
@@ -14,6 +15,10 @@ import com.example.dietmemory.databinding.FragmentMainSettingBaseBinding
 import com.example.dietmemory.main.MainActivity
 import com.example.dietmemory.main.setting.SettingRvView
 import com.example.dietmemory.main.setting.adapter.SettingAdapter
+import com.example.dietmemory.main.setting.base.models.ResponseWithdrawal
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SettingBaseFragment(private val inputView : SettingRvView) : BaseFragment<FragmentMainSettingBaseBinding>(FragmentMainSettingBaseBinding::bind, R.layout.fragment_main_setting_base) {
 
@@ -22,7 +27,25 @@ class SettingBaseFragment(private val inputView : SettingRvView) : BaseFragment<
         if (result.resultCode == RESULT_OK){
             // call withdrawal api
             //(activity as MainActivity).afterLogout() // 원래 이것도 api success 부분에서 호출되어야 한다.
-            Log.d("withdrawal testing", "success")
+            // api 하나만을 위해 contract, presenter 를 생성하는것은 비효율적이라 그냥 여기서 retrofit 호출
+            val retrofitInterface = GlobalApplication.sRetrofit.create(withdrawalRetrofitInterface::class.java)
+            retrofitInterface.getWithdrawal().enqueue(object : Callback<ResponseWithdrawal>{
+                override fun onResponse(call: Call<ResponseWithdrawal>, response: Response<ResponseWithdrawal>) {
+                    if (response.isSuccessful){
+                        if(response.body()!!.isSuccess) {
+                            Toast.makeText(activity as MainActivity, "회원탈퇴가 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                            (activity as MainActivity).afterLogout()
+                        } else {
+                            Toast.makeText(activity as MainActivity, "회원탈퇴에 실패하였습니다, 잠시 뒤 시도해주세요", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseWithdrawal>, t: Throwable) {
+                    Log.d("withdrawal", "onFailure...")
+                }
+
+            })
         }
     }
 
