@@ -42,7 +42,7 @@ class ExerciseFragment : BaseFragment<FragmentAddExerciseBinding>(FragmentAddExe
 
     override fun applyPostExer(isSuccess: Boolean) {
         if (isSuccess) {
-            (activity as AddActivity).drop()
+            (activity as AddActivity).drop(2)
         } else {
             Toast.makeText(activity as AddActivity, "데이터 추가에 실패했습니다 잠시 후에 실행해주세요", Toast.LENGTH_SHORT).show()
         }

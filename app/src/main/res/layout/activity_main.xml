@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".main.MainActivity">
 
     <FrameLayout
@@ -25,6 +26,7 @@
             android:id="@+id/bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             app:menu="@menu/bottom_main_menu"
             app:labelVisibilityMode="labeled"
             app:elevation="0dp"

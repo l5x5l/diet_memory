@@ -37,16 +37,18 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="64dp"
             android:layout_height="64dp"
+            android:tint="@color/gray"
             app:layout_constraintTop_toTopOf="@id/iv_photo"
             app:layout_constraintBottom_toBottomOf="@id/iv_photo"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
-            android:src="@drawable/ic_baseline_camera"/>
+            android:src="@drawable/ic_baseline_insert_photo"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_photo"
             android:layout_width="0dp"
             android:layout_height="336dp"
+            android:scaleType="centerCrop"
             app:layout_constraintTop_toBottomOf="@id/et_food_name"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
@@ -58,6 +60,7 @@
             android:layout_height="24dp"
             app:layout_constraintTop_toTopOf="@id/iv_photo"
             app:layout_constraintEnd_toEndOf="@id/iv_photo"
+            android:tint="@color/gray"
             android:layout_margin="16dp"
             android:src="@drawable/ic_baseline_camera"/>
 
@@ -67,6 +70,7 @@
             android:layout_height="24dp"
             app:layout_constraintEnd_toStartOf="@id/btn_photo"
             app:layout_constraintTop_toTopOf="@id/btn_photo"
+            android:tint="@color/gray"
             android:layout_marginEnd="16dp"
             android:src="@drawable/ic_baseline_gallery"/>
 
@@ -96,6 +100,7 @@
                 app:singleLine="true">
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/breakfast"
@@ -104,6 +109,7 @@
                     android:minHeight="0dp"/>
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/brunch"
@@ -111,6 +117,7 @@
                     android:minHeight="0dp"/>
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/lunch"
@@ -118,6 +125,7 @@
                     android:minHeight="0dp"/>
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/linner"
@@ -125,6 +133,7 @@
                     android:minHeight="0dp"/>
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/dinner"
@@ -132,6 +141,7 @@
                     android:minHeight="0dp"/>
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/snack"

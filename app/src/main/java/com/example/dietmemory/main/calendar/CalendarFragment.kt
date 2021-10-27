@@ -1,9 +1,7 @@
 package com.example.dietmemory.main.calendar
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dietmemory.R
 import com.example.dietmemory.config.BaseFragment
