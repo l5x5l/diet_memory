@@ -20,8 +20,9 @@ class AddActivity : BaseActivity<ActivityAddBinding>(ActivityAddBinding::inflate
         fragmentList.add(ExerciseFragment())
 
         binding.btnCancel.setOnClickListener {
-            finish()
-            overridePendingTransition(R.anim.none, R.anim.to_bottom)
+            /*finish()
+            overridePendingTransition(R.anim.none, R.anim.to_bottom)*/
+            drop()
         }
 
         binding.btnFood.setOnClickListener {
@@ -45,5 +46,10 @@ class AddActivity : BaseActivity<ActivityAddBinding>(ActivityAddBinding::inflate
         supportFragmentManager.beginTransaction().add(binding.layoutTarget.id, fragmentList[1]).commit()
         supportFragmentManager.beginTransaction().hide(fragmentList[1]).commit()
         supportFragmentManager.beginTransaction().add(binding.layoutTarget.id, fragmentList[0]).commit()
+    }
+
+    fun drop() {
+        finish()
+        overridePendingTransition(R.anim.none, R.anim.to_bottom)
     }
 }

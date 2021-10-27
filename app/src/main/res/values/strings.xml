@@ -88,6 +88,9 @@
     <string name="exercise_answer3">60분~120분</string>
     <string name="exercise_answer4">120분 이상</string>
 
+    <string name="calorie_per_10">10분당 %d</string>
+    <string name="add_minute">%d분</string>
+
     <!-- 단위 표시 항목 목록 -->
     <string name="unit_type1">kg/ml</string>
     <string name="unit_type2">lbs/ml</string>
