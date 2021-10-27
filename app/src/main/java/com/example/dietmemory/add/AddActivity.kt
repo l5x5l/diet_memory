@@ -48,7 +48,8 @@ class AddActivity : BaseActivity<ActivityAddBinding>(ActivityAddBinding::inflate
         supportFragmentManager.beginTransaction().add(binding.layoutTarget.id, fragmentList[0]).commit()
     }
 
-    fun drop() {
+    fun drop(resultCode : Int = 0) {
+        setResult(resultCode)
         finish()
         overridePendingTransition(R.anim.none, R.anim.to_bottom)
     }

@@ -2,6 +2,8 @@ package com.example.dietmemory.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.dietmemory.R
 import com.example.dietmemory.add.AddActivity
@@ -20,6 +22,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private var settingFragment : SettingFragment ?= null
     private var exerciseFragment : ExerciseFragment ?= null
     private lateinit var currentFragment : Fragment
+
+    private val getAddResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {result ->
+        // 1은 음식 추가 완료, 2는 운동 추가 완료, 그 이외는 취소
+        if (result.resultCode == 1){
+            applyAddFood()
+        } else if (result.resultCode == 2) {
+            applyAddExer()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +80,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             true
         }
         binding.btnAdd.setOnClickListener {
-            startActivity(Intent(this, AddActivity::class.java))
+            val intent = Intent(this, AddActivity::class.java)
+            getAddResult.launch(intent)
             overridePendingTransition(R.anim.from_bottom, R.anim.none)
         }
     }
@@ -83,5 +95,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     // 설정 페이지에서 app 설정 변경완료시 호출될 예정
     fun applyShowCal() {
         if (homeFragment != null) homeFragment!!.applyShowCal()
+    }
+
+    // 추가 페이지에서 음식 추가시 호출될 예정
+    private fun applyAddFood(){
+        if (homeFragment != null) homeFragment!!.applyFoodChange()
+    }
+
+    private fun applyAddExer() {
+        Log.d("add exercise", "success")
     }
 }

@@ -27,6 +27,8 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         binding.viewWater.btnSoloCup.setOnClickListener { presenter.changeWaterIntake(1) }
         binding.viewWater.btnBottle.setOnClickListener { presenter.changeWaterIntake(2) }
 
+        applyShowCal()
+
         presenter.tryGetTodayData()
     }
 
@@ -36,7 +38,13 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
     }
 
     override fun applyTodayData(dataList : MainResponse, totalCal : Int, totalCar : Int, totalFat : Int, totalPro : Int) {
-        (binding.rvTodayIntake.adapter as FoodAdapter).applyData(dataList.Food)
+        if (dataList.Food.size == 0){
+            binding.viewAddInduce.layoutMain.visibility = View.VISIBLE
+            (binding.rvTodayIntake.adapter as FoodAdapter).applyData(arrayListOf())
+        } else {
+            binding.viewAddInduce.layoutMain.visibility = View.GONE
+            (binding.rvTodayIntake.adapter as FoodAdapter).applyData(dataList.Food)
+        }
         binding.viewIntakeInfo.tvTargetCalorie.text = dataList.Data.enCalo.toString()
         binding.viewIntakeInfo.tvIntakeCalorie.text = totalCal.toString()
         binding.viewIntakeInfo.tvIntakeCarbohydrate.text = getString(R.string.intake_slash_target, totalCar, dataList.Data.enCarbo)
@@ -59,6 +67,10 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
             binding.viewIntakeInfo.cvCalorie.visibility = View.GONE
             binding.viewIntakeInfo.cvNutrient.visibility = View.GONE
         }
+    }
+
+    fun applyFoodChange(){
+        presenter.tryGetTodayData()
     }
 
 }

@@ -7,13 +7,15 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.dietmemory.R
+import com.example.dietmemory.add.AddActivity
 import com.example.dietmemory.add.food.models.FoodRecordData
 import com.example.dietmemory.config.BaseFragment
 import com.example.dietmemory.databinding.FragmentAddFoodBinding
-import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.material.chip.Chip
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
@@ -70,7 +72,6 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
                 Log.d("image upload", "failure")
             }
         }
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -91,17 +92,15 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
         }
 
         binding.btnSave.setOnClickListener {
-            /*if (uri != null){
-                val storage : FirebaseStorage = FirebaseStorage.getInstance()
-                val fileName = "IMAGE_${SimpleDateFormat("yyyymmdd_HHmmss", Locale.getDefault()).format(Date())}_.png"
-                val imageRef = storage.reference.child("images/").child(fileName)
-                imageRef.putFile(uri!!).addOnSuccessListener {
-                    Log.d("image upload", "success")
-                }.addOnFailureListener{
-                    Log.d("image upload", "failure")
+            var checkIdx = 0
+            for (idx in 0 until binding.cgCategory.childCount){
+                val chip = binding.cgCategory.getChildAt(idx) as Chip
+                if (chip.isChecked){
+                    checkIdx = idx
+                    break
                 }
-                presenter.tryGetFoodRecord(fileName)
-            }*/
+            }
+            presenter.tryPostAddFood(checkIdx, binding.etFoodName.text.toString())
         }
     }
 
@@ -116,5 +115,13 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
         binding.etCarbohydrate.setText(food.carbo.toString())
         binding.etProtein.setText(food.protein.toString())
         binding.etFoodName.setText(food.foodName)
+    }
+
+    override fun applyPostAddFood(isSuccess: Boolean) {
+        if (isSuccess){
+            (activity as AddActivity).drop(1)
+        } else {
+            Toast.makeText(activity as AddActivity, "데이터 추가에 실패했습니다 잠시 후에 실행해주세요", Toast.LENGTH_SHORT).show()
+        }
     }
 }
