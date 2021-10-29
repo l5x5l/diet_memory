@@ -126,6 +126,16 @@
         android:layout_marginTop="16dp"
         android:text="@string/exercise_index"/>
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_exercise_plus"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintTop_toTopOf="@id/tv_exercise_index"
+        app:layout_constraintBottom_toBottomOf="@id/tv_exercise_index"
+        app:layout_constraintStart_toEndOf="@id/tv_exercise_index_value"
+        android:src="@drawable/ic_next"/>
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_exercise_index_value"
         android:layout_width="0dp"
@@ -133,10 +143,19 @@
         android:gravity="center"
         app:layout_constraintTop_toTopOf="@id/tv_exercise_index"
         app:layout_constraintBottom_toBottomOf="@id/tv_exercise_index"
-        app:layout_constraintEnd_toEndOf="@id/guide_end"
-        app:layout_constraintStart_toStartOf="@id/guide_setting_area"
+        app:layout_constraintEnd_toStartOf="@id/btn_exercise_plus"
+        app:layout_constraintStart_toEndOf="@id/btn_exercise_delete"
         tools:text="1.15"/>
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_exercise_delete"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        app:layout_constraintTop_toTopOf="@id/tv_exercise_index"
+        app:layout_constraintBottom_toBottomOf="@id/tv_exercise_index"
+        app:layout_constraintEnd_toStartOf="@id/tv_exercise_index_value"
+        app:layout_constraintStart_toStartOf="@id/guide_setting_area"
+        android:src="@drawable/ic_prev"/>
 
 
 
