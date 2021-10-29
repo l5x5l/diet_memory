@@ -7,6 +7,7 @@ import com.example.dietmemory.config.BaseFragment
 import com.example.dietmemory.databinding.FragmentMainSettingBinding
 import com.example.dietmemory.main.setting.app.SettingAppFragment
 import com.example.dietmemory.main.setting.base.SettingBaseFragment
+import com.example.dietmemory.main.setting.calorie.SettingCalorieFragment
 import com.example.dietmemory.main.setting.physical.SettingPhysicalFragment
 import com.example.dietmemory.main.setting.restrict.SettingRestrictFragment
 import com.example.dietmemory.main.setting.supplement.SettingSupplementFragment
@@ -23,13 +24,13 @@ class SettingFragment : BaseFragment<FragmentMainSettingBinding>(FragmentMainSet
         childFragmentManager.beginTransaction().add(binding.layoutTarget.id, settingBaseFragment!!).commit()
 
         binding.btnCancel.setOnClickListener {
-            showFragment(4, "")
+            showFragment(5, "")
         }
         binding.btnSave.setOnClickListener {
             if (currentFragment != null){
                 currentFragment!!.save()
             }
-            showFragment(4, "")
+            showFragment(5, "")
         }
     }
 
@@ -62,6 +63,13 @@ class SettingFragment : BaseFragment<FragmentMainSettingBinding>(FragmentMainSet
                 binding.btnCancel.visibility = View.VISIBLE
                 currentFragment = SettingRestrictFragment()
                 childFragmentManager.beginTransaction().replace(binding.layoutTarget.id, currentFragment as SettingRestrictFragment).commit()
+            }
+            4 -> {
+                binding.tvDetail.text = getString(R.string.with_line, detail)
+                binding.btnSave.visibility = View.VISIBLE
+                binding.btnCancel.visibility = View.VISIBLE
+                currentFragment = SettingCalorieFragment()
+                childFragmentManager.beginTransaction().replace(binding.layoutTarget.id, currentFragment as SettingCalorieFragment).commit()
             }
             else -> {
                 binding.tvDetail.text = detail

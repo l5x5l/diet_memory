@@ -57,6 +57,7 @@ class SettingBaseFragment(private val inputView : SettingRvView) : BaseFragment<
         settingList.add(getString(R.string.physical_setting))
         settingList.add(getString(R.string.supplement_and_medicine))
         settingList.add(getString(R.string.restrict_food_setting))
+        settingList.add(getString(R.string.set_goal_calorie))
 
         binding.rvDetail.layoutManager = LinearLayoutManager(activity as MainActivity, LinearLayoutManager.VERTICAL, false)
         binding.rvDetail.adapter = SettingAdapter(activity as MainActivity, inputView, settingList)
