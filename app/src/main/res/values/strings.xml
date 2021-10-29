@@ -71,6 +71,7 @@
     <string name="vertical_line">|</string>
     <string name="slash">/</string>
 
+    <string name="set_goal_calorie">목표 칼로리 설정</string>
     <string name="calorie">칼로리</string>
     <string name="protein">단백질</string>
     <string name="fat">지방</string>
