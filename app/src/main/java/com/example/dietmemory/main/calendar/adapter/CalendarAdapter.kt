@@ -30,7 +30,7 @@ class CalendarAdapter(private val context : Context, private val presenter : Cal
         val borderLeft = binding.borderLeft
         val borderRight = binding.borderRight
         val date = binding.tvDate
-        val checked = binding.ivCheck
+        //val checked = binding.ivCheck
         val layoutMain = binding.layoutMain
     }
 
@@ -62,6 +62,7 @@ class CalendarAdapter(private val context : Context, private val presenter : Cal
 
                 holder.layoutMain.setOnClickListener{
                     presenter.tryGetDateData(calendar.calendar.get(Calendar.YEAR), calendar.calendar.get(Calendar.MONTH), calendar.data[position])
+                    //Log.d("current vs click", "${GlobalApplication.month} / ${GlobalApplication.day} vs ${calendar.calendar.get(Calendar.MONTH)} / ${calendar.data[position]}")
                 }
             }
         }
@@ -71,6 +72,7 @@ class CalendarAdapter(private val context : Context, private val presenter : Cal
 
     fun changeData(inputDateList : ArrayList<Int>){
         dataList.clear()
+        dataList.add(2) // 가장 첫 데이터가 씹혀서 임시로 추가함
         dataList.addAll(inputDateList)
         notifyDataSetChanged()
     }
