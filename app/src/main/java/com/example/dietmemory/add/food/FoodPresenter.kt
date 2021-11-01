@@ -44,7 +44,7 @@ class FoodPresenter : FoodContract.Presenter {
     override fun tryPostAddFood(intakeTime: Int, foodName: String) {
         if (uri != null){
             val retrofitInterface = GlobalApplication.sRetrofit.create(FoodRetrofitInterface::class.java)
-            retrofitInterface.postAddFood(PostAddFood(GlobalApplication.year, GlobalApplication.month, GlobalApplication.day, intakeTime, uri!!, foodName)).enqueue(object : Callback<AddFoodResponse>{
+            retrofitInterface.postAddFood(PostAddFood(GlobalApplication.year, GlobalApplication.month + 1, GlobalApplication.day, intakeTime, uri!!, foodName)).enqueue(object : Callback<AddFoodResponse>{
                 override fun onResponse(call: Call<AddFoodResponse>, response: Response<AddFoodResponse>) {
                     if (response.isSuccessful) {
                         view!!.applyPostAddFood(response.body()!!.isSuccess)

@@ -16,7 +16,7 @@ class HomePresenter : HomeContract.Presenter {
     override fun tryGetTodayData() {
         // retrofit2 호출해서 오늘 데이터 수신
         val retrofitInterface = GlobalApplication.sRetrofit.create(HomeRetrofitInterface::class.java)
-        retrofitInterface.postMain(postMainData(GlobalApplication.year, GlobalApplication.month, GlobalApplication.day)).enqueue(object:Callback<MainResponse>{
+        retrofitInterface.postMain(postMainData(GlobalApplication.year, GlobalApplication.month + 1, GlobalApplication.day)).enqueue(object:Callback<MainResponse>{
             override fun onResponse(call: Call<MainResponse>, response: Response<MainResponse>) {
                 if (response.isSuccessful){
                     Log.d("main success", response.body()!!.message)

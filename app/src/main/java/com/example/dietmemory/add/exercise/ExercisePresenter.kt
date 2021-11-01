@@ -17,7 +17,7 @@ class ExercisePresenter : ExerciseContract.Presenter {
 
     override fun tryPostExer(fileURL: String) {
         val retrofitInterface = GlobalApplication.sRetrofit.create(ExerciseRetrofitInterface::class.java)
-        retrofitInterface.postExercise(PostExer(exerciseName, GlobalApplication.year, GlobalApplication.month, GlobalApplication.day, _time, fileURL)).enqueue(object : Callback<ExerResponse>{
+        retrofitInterface.postExercise(PostExer(exerciseName, GlobalApplication.year, GlobalApplication.month + 1, GlobalApplication.day, _time, fileURL)).enqueue(object : Callback<ExerResponse>{
             override fun onResponse(call: Call<ExerResponse>, response: Response<ExerResponse>) {
                 if (response.isSuccessful){
                     view!!.applyPostExer(response.body()!!.isSuccess)
