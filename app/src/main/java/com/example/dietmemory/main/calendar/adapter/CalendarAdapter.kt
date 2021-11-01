@@ -48,7 +48,7 @@ class CalendarAdapter(private val context : Context, private val presenter : Cal
         // 데이터가 해당 달의 데이터만 가져온다 가정
         holder.date.text = calendar.data[position].toString()
 
-        if (position < calendar.prevMonthTailOffset || position >= calendar.nextMonthHeadOffset + calendar.currentMonthMaxDate){
+        if (position < calendar.prevMonthTailOffset || position >= calendar.prevMonthTailOffset + calendar.currentMonthMaxDate){
             holder.date.setTextColor(ContextCompat.getColor(context, R.color.gray))
         } else {
             holder.date.setTextColor(ContextCompat.getColor(context, R.color.black))
