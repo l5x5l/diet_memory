@@ -11,6 +11,7 @@ import com.example.dietmemory.main.MainActivity
 import com.example.dietmemory.main.home.adapter.FoodAdapter
 import com.example.dietmemory.main.home.adapter.FoodRecommendAdapter
 import com.example.dietmemory.main.home.adapter.FoodRecommendDecoration
+import com.example.dietmemory.main.home.adapter.SupplementAdapter
 import com.example.dietmemory.main.home.models.MainResponse
 import com.example.dietmemory.main.home.models.RecommendFood
 
@@ -36,6 +37,9 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         binding.viewRecommendFood.recommendMain.setOnClickListener {
             presenter.tryGetRecommendData()
         }
+
+        binding.viewSupplements.rvSupplement.layoutManager = LinearLayoutManager(activity as MainActivity, LinearLayoutManager.VERTICAL, false)
+        binding.viewSupplements.rvSupplement.adapter = SupplementAdapter(activity as MainActivity)
 
 
         applyShowCal()
@@ -63,6 +67,8 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         binding.viewIntakeInfo.tvIntakeCarbohydrate.text = getString(R.string.intake_slash_target, totalCar, dataList.Data.enCarbo)
         binding.viewIntakeInfo.tvIntakeProtein.text = getString(R.string.intake_slash_target, totalPro, dataList.Data.enProtein)
         binding.viewIntakeInfo.tvIntakeFat.text = getString(R.string.intake_slash_target, totalFat, dataList.Data.enFat)
+
+        (binding.viewSupplements.rvSupplement.adapter as SupplementAdapter).applyData(dataList.Medicine)
     }
 
     override fun applyWaterIntake(intake: Int, scaleType: Int) {

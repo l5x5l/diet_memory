@@ -83,6 +83,7 @@
     <string name="with_line">- %s</string>
     <string name="intake_slash_target">%d/%d</string>
     <string name="form_nutrient_value">%s : %d / %d</string>
+    <string name="form_count">%d번</string>
 
     <!-- exercise question 에 대한 응답 항목 -->
     <string name="exercise_answer1">30분 미만</string>
