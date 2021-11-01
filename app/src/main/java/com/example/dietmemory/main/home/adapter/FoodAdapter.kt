@@ -11,7 +11,7 @@ import com.example.dietmemory.main.home.models.FoodData
 class FoodAdapter(private val context: Context) : RecyclerView.Adapter<FoodAdapter.ViewHolder>(){
 
     private val dataList = ArrayList<FoodData>()
-    private val mealTime = arrayListOf("아침", "점심", "저녁", "아점", "점저", "간식")
+    private val mealTime = arrayListOf("아침", "아점", "점심", "점저", "저녁", "간식")
     private lateinit var binding : ItemMainHomeFoodBinding
     private val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
