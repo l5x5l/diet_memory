@@ -1,11 +1,12 @@
 package com.example.dietmemory.main.calendar
 
 import com.example.dietmemory.config.GlobalApplication
-import com.example.dietmemory.main.calendar.models.PostDaySummary
-import com.example.dietmemory.main.calendar.models.ResponseDaySummary
+import com.example.dietmemory.main.calendar.models.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CalendarPresenter : CalendarContract.Presenter {
 
@@ -37,9 +38,21 @@ class CalendarPresenter : CalendarContract.Presenter {
     }
 
     override fun tryGetMonthData(year: Int, month: Int) {
-        // 원래 서버로부터 통신하여 가져와야 한다.
-        val tempDataList = arrayListOf(0,0,0,1,1,1,2,0,1,2,0,0,0,1,1,1,2,0,1,2)
-        calendarView!!.applyMonthData(year, month, tempDataList)
+        val retrofitInterface = GlobalApplication.sRetrofit.create(CalendarRetrofitInterface::class.java)
+        retrofitInterface.postCalendar(PostCalendar(year, month + 1)).enqueue(object : Callback<ResponseCalendar>{
+            override fun onResponse(call: Call<ResponseCalendar>, response: Response<ResponseCalendar>) {
+                if (response.isSuccessful){
+                    if (response.body()!!.isSuccess){
+                        val dayData = changeDayData(year, month, response.body()!!.number)
+                        calendarView!!.applyMonthData(year, month, dayData)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseCalendar>, t: Throwable) {
+
+            }
+        })
     }
 
     override fun takeView(inputView: CalendarContract.View) {
@@ -50,9 +63,18 @@ class CalendarPresenter : CalendarContract.Presenter {
         calendarView = null
     }
 
-    /*// 해당 달에 대한 데이터 적용
-    fun getCalendar(){
-        val tempDataList = arrayListOf(0,0,0,1,1,1,2,0,1,2,0,2,1,1)
-        calendarView!!.applyMonthData(tempDataList)
-    }*/
+
+    private fun changeDayData(year : Int, month : Int, inputData : ArrayList<DayInfo>) : ArrayList<Int>{
+        val cal = Calendar.getInstance()
+        cal.set(Calendar.YEAR, year)
+        cal.set(Calendar.MONTH, month)
+        val day = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
+        val dayList = IntArray(day){-1}
+
+        for (data in inputData){
+            dayList[data.day - 1] = data.num
+        }
+
+        return arrayListOf(*dayList.toTypedArray())
+    }
 }
