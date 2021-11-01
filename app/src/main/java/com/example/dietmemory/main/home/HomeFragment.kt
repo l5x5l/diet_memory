@@ -9,7 +9,10 @@ import com.example.dietmemory.config.GlobalApplication
 import com.example.dietmemory.databinding.FragmentMainHomeBinding
 import com.example.dietmemory.main.MainActivity
 import com.example.dietmemory.main.home.adapter.FoodAdapter
+import com.example.dietmemory.main.home.adapter.FoodRecommendAdapter
+import com.example.dietmemory.main.home.adapter.FoodRecommendDecoration
 import com.example.dietmemory.main.home.models.MainResponse
+import com.example.dietmemory.main.home.models.RecommendFood
 
 class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBinding::bind, R.layout.fragment_main_home), HomeContract.View {
 
@@ -27,6 +30,14 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         binding.viewWater.btnSoloCup.setOnClickListener { presenter.changeWaterIntake(1) }
         binding.viewWater.btnBottle.setOnClickListener { presenter.changeWaterIntake(2) }
 
+        binding.viewRecommendFood.rvRecommend.layoutManager = LinearLayoutManager(activity as MainActivity, LinearLayoutManager.HORIZONTAL, false)
+        binding.viewRecommendFood.rvRecommend.adapter = FoodRecommendAdapter(activity as MainActivity)
+        binding.viewRecommendFood.rvRecommend.addItemDecoration(FoodRecommendDecoration(activity as MainActivity))
+        binding.viewRecommendFood.recommendMain.setOnClickListener {
+            presenter.tryGetRecommendData()
+        }
+
+
         applyShowCal()
 
         presenter.tryGetTodayData()
@@ -41,9 +52,11 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         if (dataList.Food.size == 0){
             binding.viewAddInduce.layoutMain.visibility = View.VISIBLE
             (binding.rvTodayIntake.adapter as FoodAdapter).applyData(arrayListOf())
+            binding.viewRecommendFood.recommendMain.visibility = View.GONE
         } else {
             binding.viewAddInduce.layoutMain.visibility = View.GONE
             (binding.rvTodayIntake.adapter as FoodAdapter).applyData(dataList.Food)
+            binding.viewRecommendFood.recommendMain.visibility = View.VISIBLE
         }
         binding.viewIntakeInfo.tvTargetCalorie.text = dataList.Data.enCalo.toString()
         binding.viewIntakeInfo.tvIntakeCalorie.text = totalCal.toString()
@@ -54,6 +67,16 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
 
     override fun applyWaterIntake(intake: Int, scaleType: Int) {
         binding.viewWater.tvIntakeWater.text = (activity as MainActivity).getString(R.string.value_scale_form, intake, "ml")
+    }
+
+    override fun applyRecommendData(available: Boolean, message: String, foods: ArrayList<RecommendFood>) {
+        if (available){
+            binding.viewRecommendFood.btnRecommend.visibility = View.GONE
+            (binding.viewRecommendFood.rvRecommend.adapter as FoodRecommendAdapter).applyData(foods)
+            binding.viewRecommendFood.rvRecommend.visibility = View.VISIBLE
+        } else {
+            binding.viewRecommendFood.btnRecommend.text = message
+        }
     }
 
     // 섫정에서 칼로리 표시 유무를 변경한 경우

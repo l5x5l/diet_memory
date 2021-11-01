@@ -3,6 +3,7 @@ package com.example.dietmemory.main.home
 import android.util.Log
 import com.example.dietmemory.config.GlobalApplication
 import com.example.dietmemory.main.home.models.MainResponse
+import com.example.dietmemory.main.home.models.ResponseRecommend
 import com.example.dietmemory.main.home.models.postMainData
 import retrofit2.Call
 import retrofit2.Callback
@@ -53,6 +54,28 @@ class HomePresenter : HomeContract.Presenter {
             else -> model.intakeWater(500)
         }
         view!!.applyWaterIntake(water, 0)
+    }
+
+    override fun tryGetRecommendData() {
+        val retrofitInterface = GlobalApplication.sRetrofit.create(HomeRetrofitInterface::class.java)
+        retrofitInterface.postRecommend(postMainData(GlobalApplication.year, GlobalApplication.month + 1, GlobalApplication.day)).enqueue(object : Callback<ResponseRecommend>{
+            override fun onResponse(call: Call<ResponseRecommend>, response: Response<ResponseRecommend>) {
+                if (response.isSuccessful){
+                    if (response.body()!!.isSuccess){
+                        view!!.applyRecommendData(response.body()!!.isSuccess, response.body()!!.message, response.body()!!.food)
+                    }else {
+                        view!!.applyRecommendData(response.body()!!.isSuccess, response.body()!!.message, arrayListOf())
+                    }
+                } else {
+                    Log.d("recommend fail", "server's error?")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseRecommend>, t: Throwable) {
+                Log.d("recommend onFailure", t.toString())
+            }
+
+        })
     }
 
     override fun takeView(inputView: HomeContract.View) {

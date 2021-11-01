@@ -104,7 +104,11 @@
     <string name="calendar_hint">달력을 눌러 해당 날의 \n식단을 확인해보세요!</string>
     <string name="diet_empty">아직 기록된 식단이 없어요</string>
     <string name="diet_empty2">버튼을 눌러 식단을 올려보세요</string>
-    
+
+    <!-- 식사메뉴 추천 관련 -->
+    <string name="recommand_food">저녁식사로 이건 어떠세요?</string>
+
+
     <!-- 왜 있는지 모를 contentDescription 용 -->
     <string name="contextDescription_main_btn_add">음식, 운동과 같은 데이터를 추가할 때 사용합니다.</string>
 </resources>

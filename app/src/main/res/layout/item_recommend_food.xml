@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_main"
+    app:cardCornerRadius="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="156dp"
+            android:layout_height="96dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:src="@drawable/ic_launcher_background"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/view_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/iv_photo"
+            app:layout_constraintEnd_toEndOf="@id/iv_photo"
+            app:layout_constraintTop_toTopOf="@id/iv_photo"
+            app:layout_constraintBottom_toBottomOf="@id/iv_photo"
+            android:visibility="gone"
+            android:background="@color/black_35"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_food_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/iv_photo"
+            app:layout_constraintBottom_toTopOf="@id/tv_calorie"
+            app:layout_constraintStart_toStartOf="@id/iv_photo"
+            app:layout_constraintEnd_toEndOf="@id/iv_photo"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            tools:text="햄버거"
+            android:textSize="16sp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_calorie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_food_name"
+            app:layout_constraintBottom_toBottomOf="@id/iv_photo"
+            app:layout_constraintStart_toStartOf="@id/iv_photo"
+            app:layout_constraintEnd_toEndOf="@id/iv_photo"
+            android:visibility="gone"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/white"
+            tools:text="342"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+
