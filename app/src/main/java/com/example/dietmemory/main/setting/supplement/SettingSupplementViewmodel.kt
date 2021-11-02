@@ -3,15 +3,14 @@ package com.example.dietmemory.main.setting.supplement
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.dietmemory.config.GlobalApplication
-import com.example.dietmemory.main.setting.supplement.models.Medicine
-import com.example.dietmemory.main.setting.supplement.models.PostMedicineData
-import com.example.dietmemory.main.setting.supplement.models.ResponseMedicineData
+import com.example.dietmemory.main.setting.supplement.models.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SettingSupplementViewmodel  : ViewModel() {
-    var supplementDatas = MutableLiveData<ArrayList<Medicine>>()
+    var supplementDatas = MutableLiveData<ArrayList<EditMedicine>>()
+    var resultCode = MutableLiveData<Int>()
 
     // network
     fun getMedicine(){
@@ -26,6 +25,27 @@ class SettingSupplementViewmodel  : ViewModel() {
             }
 
             override fun onFailure(call: Call<ResponseMedicineData>, t: Throwable) {
+
+            }
+
+        })
+    }
+
+    // network
+    fun setMedicine(newData : ArrayList<EditMedicine>){
+        val retrofitInterface = GlobalApplication.sRetrofit.create(SettingSupplementRetrofitInterface::class.java)
+        retrofitInterface.postMedicine(PostMedicine(newData)).enqueue(object : Callback<ResponseMedicine>{
+            override fun onResponse(call: Call<ResponseMedicine>, response: Response<ResponseMedicine>) {
+                if (response.isSuccessful){
+                    if (response.body()!!.isSuccess){
+                        resultCode.value = 200
+                    } else {
+                        resultCode.value = 500
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseMedicine>, t: Throwable) {
 
             }
 

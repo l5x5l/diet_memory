@@ -1,10 +1,13 @@
 package com.example.dietmemory.main.setting
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import com.example.dietmemory.R
 import com.example.dietmemory.config.BaseFragment
 import com.example.dietmemory.databinding.FragmentMainSettingBinding
+import com.example.dietmemory.main.MainActivity
 import com.example.dietmemory.main.setting.app.SettingAppFragment
 import com.example.dietmemory.main.setting.base.SettingBaseFragment
 import com.example.dietmemory.main.setting.calorie.SettingCalorieFragment
@@ -29,6 +32,11 @@ class SettingFragment : BaseFragment<FragmentMainSettingBinding>(FragmentMainSet
         binding.btnSave.setOnClickListener {
             if (currentFragment != null){
                 currentFragment!!.save()
+                if (currentFragment!!::class == SettingSupplementFragment::class){
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        (activity as MainActivity).applySupplement()
+                    }, 1500)
+                }
             }
             showFragment(5, "")
         }

@@ -109,6 +109,9 @@
     <!-- 식사메뉴 추천 관련 -->
     <string name="recommand_food">저녁식사로 이건 어떠세요?</string>
 
+    <!-- 약품 추가 bottom sheet -->
+    <string name="write_supplement_name">추가할 영양제/약품의 이름을 입력해주세요</string>
+    <string name="confirm">확인</string>
 
     <!-- 왜 있는지 모를 contentDescription 용 -->
     <string name="contextDescription_main_btn_add">음식, 운동과 같은 데이터를 추가할 때 사용합니다.</string>

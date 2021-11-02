@@ -105,4 +105,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private fun applyAddExercise() {
         if (exerciseFragment != null) exerciseFragment!!.applyExerciseChange()
     }
+
+    // 설정 페이지에서 약품 정보 변경시 호출
+    fun applySupplement(){
+        if (homeFragment != null) homeFragment!!.applyFoodChange()
+    }
 }
