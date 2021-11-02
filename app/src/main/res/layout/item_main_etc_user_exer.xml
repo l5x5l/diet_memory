@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_exer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_time"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        tools:text="걷기"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_exer_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_exer_name"
+        android:textColor="@color/gray"
+        tools:text="30분"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_vertical_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_time"
+        app:layout_constraintBottom_toBottomOf="@id/tv_time"
+        app:layout_constraintTop_toTopOf="@id/tv_time"
+        android:layout_marginStart="6dp"
+        android:textColor="@color/gray"
+        android:text="@string/vertical_line"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_calorie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_vertical_line"
+        app:layout_constraintBottom_toBottomOf="@id/tv_time"
+        app:layout_constraintTop_toTopOf="@id/tv_time"
+        android:layout_marginStart="6dp"
+        android:textColor="@color/gray"
+        tools:text="총 200 cal"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

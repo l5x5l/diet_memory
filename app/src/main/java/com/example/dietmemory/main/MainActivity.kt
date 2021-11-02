@@ -28,7 +28,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         if (result.resultCode == 1){
             applyAddFood()
         } else if (result.resultCode == 2) {
-            applyAddExer()
+            applyAddExercise()
         }
     }
 
@@ -102,7 +102,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         if (homeFragment != null) homeFragment!!.applyFoodChange()
     }
 
-    private fun applyAddExer() {
-        Log.d("add exercise", "success")
+    private fun applyAddExercise() {
+        if (exerciseFragment != null) exerciseFragment!!.applyExerciseChange()
     }
 }
