@@ -34,10 +34,15 @@ class SettingCalorieViewModel : ViewModel() {
             ) {
                 if (response.isSuccessful){
                     if (response.body()!!.isSuccess){
-                        calorie.value = response.body()!!.data.calo
-                        protein.value = response.body()!!.data.protein
-                        carbo.value = response.body()!!.data.carbo
-                        fat.value = response.body()!!.data.fat
+                        if (response.body()!!.message == "목표 칼로리가 없습니다."){
+                            calorie.value = 2800
+                            changeNutrient()
+                        }else {
+                            calorie.value = response.body()!!.data.calo
+                            protein.value = response.body()!!.data.protein
+                            carbo.value = response.body()!!.data.carbo
+                            fat.value = response.body()!!.data.fat
+                        }
                     }
                 }
             }

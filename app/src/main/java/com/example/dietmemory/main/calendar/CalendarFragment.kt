@@ -69,4 +69,8 @@ class CalendarFragment : BaseFragment<FragmentMainCalendarBinding>(FragmentMainC
         (binding.rvCalendar.adapter as CalendarAdapter).changeData(arrayList)
         binding.tvDate.text = getString(R.string.date_form_partial, year, month + 1)
     }
+
+    fun applyDataChange(){
+        presenter.tryGetMonthData(GlobalApplication.year, GlobalApplication.month)
+    }
 }

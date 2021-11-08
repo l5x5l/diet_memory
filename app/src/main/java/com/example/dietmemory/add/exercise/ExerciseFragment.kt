@@ -114,12 +114,15 @@ class ExerciseFragment : BaseFragment<FragmentAddExerciseBinding>(FragmentAddExe
         val data = baos.toByteArray()
 
         val uploadTask = imageRef.putBytes(data)
+        (activity as AddActivity).showLoadingDialog()
         uploadTask.addOnSuccessListener {
             imageRef.downloadUrl.addOnSuccessListener {
                 presenter.tryPostExer(it.toString())
+                (activity as AddActivity).dismissLoadingDialog()
             }
         }.addOnFailureListener {
             Log.d("image upload", "failure")
+            (activity as AddActivity).dismissLoadingDialog()
         }
     }
 

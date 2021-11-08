@@ -30,8 +30,8 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
         binding.ivPhoto.setImageURI(result.data?.data)
         uri = result.data?.data
 
-        //test
         if (uri != null){
+            (activity as AddActivity).showLoadingDialog()
             val storage : FirebaseStorage = FirebaseStorage.getInstance()
             val fileName = "IMAGE_${SimpleDateFormat("yyyymmdd_HHmmss", Locale.getDefault()).format(Date())}_.png"
             val imageRef = storage.reference.child("images/").child(fileName)
@@ -40,10 +40,12 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
                 imageRef.downloadUrl.addOnSuccessListener{
                     Log.d("image upload", it.toString())
                     presenter.tryGetFoodRecord(it.toString())
+                    (activity as AddActivity).dismissLoadingDialog()
                 }
                 //presenter.tryGetFoodRecord(fileName)
             }.addOnFailureListener{
                 Log.d("image upload", "failure")
+                (activity as AddActivity).dismissLoadingDialog()
             }
         }
     }
@@ -51,6 +53,7 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
     private val getImageFromCamera = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         val extras = result.data?.extras
         if (extras != null) {
+            (activity as AddActivity).showLoadingDialog()
             val storage : FirebaseStorage = FirebaseStorage.getInstance()
             val fileName = "IMAGE_${SimpleDateFormat("yyyymmdd_HHmmss", Locale.getDefault()).format(Date())}_.png"
             val imageRef = storage.reference.child("images/").child(fileName)
@@ -67,9 +70,11 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
                 imageRef.downloadUrl.addOnSuccessListener {
                     Log.d("image upload", it.toString())
                     presenter.tryGetFoodRecord(it.toString())
+                    (activity as AddActivity).dismissLoadingDialog()
                 }
             }.addOnFailureListener {
                 Log.d("image upload", "failure")
+                (activity as AddActivity).dismissLoadingDialog()
             }
         }
     }

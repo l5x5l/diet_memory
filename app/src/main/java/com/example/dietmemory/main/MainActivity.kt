@@ -100,6 +100,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     // 추가 페이지에서 음식 추가시 호출될 예정
     private fun applyAddFood(){
         if (homeFragment != null) homeFragment!!.applyFoodChange()
+        if (calendarFragment != null) calendarFragment!!.applyDataChange()
+
     }
 
     private fun applyAddExercise() {
