@@ -1,12 +1,11 @@
 package com.example.dietmemory.add.food
 
-import com.example.dietmemory.add.food.models.AddFoodResponse
-import com.example.dietmemory.add.food.models.FoodRecordResponse
-import com.example.dietmemory.add.food.models.PostAddFood
-import com.example.dietmemory.add.food.models.PostFoodRecord
+import com.example.dietmemory.add.food.models.*
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface FoodRetrofitInterface {
     @POST("fdreco")
@@ -14,4 +13,10 @@ interface FoodRetrofitInterface {
 
     @POST("addfood")
     fun postAddFood(@Body params : PostAddFood) : Call<AddFoodResponse>
+
+    @GET("addfood/auto")
+    fun getAutoFood(@Query("foodName")foodName : String) : Call<FoodAutoResponse>
+
+    @GET("addfood/food")
+    fun getFoodInfo(@Query("foodName")foodName : String) : Call<FoodInfoResponse>
 }

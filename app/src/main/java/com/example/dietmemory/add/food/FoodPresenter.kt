@@ -1,10 +1,7 @@
 package com.example.dietmemory.add.food
 
 import android.util.Log
-import com.example.dietmemory.add.food.models.AddFoodResponse
-import com.example.dietmemory.add.food.models.FoodRecordResponse
-import com.example.dietmemory.add.food.models.PostAddFood
-import com.example.dietmemory.add.food.models.PostFoodRecord
+import com.example.dietmemory.add.food.models.*
 import com.example.dietmemory.config.GlobalApplication
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,6 +12,7 @@ class FoodPresenter : FoodContract.Presenter {
     private var view : FoodContract.View?= null
     private var lastFoodIdx : Int = -1
     private var uri : String? = null
+    private val retrofitInterface = GlobalApplication.sRetrofit.create(FoodRetrofitInterface::class.java)
 
     override fun tryGetFoodRecord(fileUrl: String) {
         uri = fileUrl
@@ -56,9 +54,56 @@ class FoodPresenter : FoodContract.Presenter {
                 override fun onFailure(call: Call<AddFoodResponse>, t: Throwable) {
                     Log.d("tryPostAddFood", "onFailure...")
                 }
+            })
+        } else {
+            val retrofitInterface = GlobalApplication.sRetrofit.create(FoodRetrofitInterface::class.java)
+            retrofitInterface.postAddFood(PostAddFood(GlobalApplication.year, GlobalApplication.month + 1, GlobalApplication.day, intakeTime, "null", foodName)).enqueue(object : Callback<AddFoodResponse>{
+                override fun onResponse(call: Call<AddFoodResponse>, response: Response<AddFoodResponse>) {
+                    if (response.isSuccessful) {
+                        view!!.applyPostAddFood(response.body()!!.isSuccess)
+                    } else {
+                        view!!.applyPostAddFood(false)
+                    }
+                }
 
+                override fun onFailure(call: Call<AddFoodResponse>, t: Throwable) {
+                    Log.d("tryPostAddFood", "onFailure...")
+                }
             })
         }
+    }
+
+    override fun tryGetFoodAuto(word: String) {
+        retrofitInterface.getAutoFood(word).enqueue(object : Callback<FoodAutoResponse>{
+            override fun onResponse(call: Call<FoodAutoResponse>, response: Response<FoodAutoResponse>) {
+                if (response.isSuccessful){
+                    val tempList = arrayListOf<String>()
+                    for (food in response.body()!!.Name){
+                        tempList.add(food.foodName)
+                    }
+                    view!!.applyFoodAuto(tempList)
+                }
+            }
+
+            override fun onFailure(call: Call<FoodAutoResponse>, t: Throwable) {
+                Log.d("tryGetFoodAuto", "onFailure...")
+            }
+
+        })
+
+    }
+
+    override fun tryGetFoodInfo(foodName: String) {
+        retrofitInterface.getFoodInfo(foodName).enqueue(object : Callback<FoodInfoResponse>{
+            override fun onResponse(call: Call<FoodInfoResponse>, response: Response<FoodInfoResponse>) {
+                view!!.applyFoodInfo(response.body()!!)
+            }
+
+            override fun onFailure(call: Call<FoodInfoResponse>, t: Throwable) {
+                Log.d("tryGetFoodInfo", "onFailure...")
+            }
+
+        })
     }
 
     override fun takeView(inputView: FoodContract.View) {
