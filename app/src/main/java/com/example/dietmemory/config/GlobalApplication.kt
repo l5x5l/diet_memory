@@ -51,8 +51,8 @@ class GlobalApplication : Application() {
 
     private fun initRetrofitInstance() {
         val client : OkHttpClient = OkHttpClient.Builder()
-                .readTimeout(5000, TimeUnit.MILLISECONDS)
-                .connectTimeout(5000, TimeUnit.MILLISECONDS)
+                .readTimeout(10000, TimeUnit.MILLISECONDS)
+                .connectTimeout(10000, TimeUnit.MILLISECONDS)
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .addNetworkInterceptor(XAccessTokenInterceptor()).build()
 

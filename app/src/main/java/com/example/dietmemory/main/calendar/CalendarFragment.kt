@@ -73,4 +73,8 @@ class CalendarFragment : BaseFragment<FragmentMainCalendarBinding>(FragmentMainC
     fun applyDataChange(){
         presenter.tryGetMonthData(GlobalApplication.year, GlobalApplication.month)
     }
+
+    fun hideDateData(){
+        binding.viewDaySummary.root.visibility = View.GONE
+    }
 }

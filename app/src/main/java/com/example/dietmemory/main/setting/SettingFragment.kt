@@ -67,7 +67,7 @@ class SettingFragment : BaseFragment<FragmentMainSettingBinding>(FragmentMainSet
             }
             3 -> {
                 binding.tvDetail.text = getString(R.string.with_line, detail)
-                binding.btnSave.visibility = View.VISIBLE
+                binding.btnSave.visibility = View.INVISIBLE
                 binding.btnCancel.visibility = View.VISIBLE
                 currentFragment = SettingRestrictFragment()
                 childFragmentManager.beginTransaction().replace(binding.layoutTarget.id, currentFragment as SettingRestrictFragment).commit()

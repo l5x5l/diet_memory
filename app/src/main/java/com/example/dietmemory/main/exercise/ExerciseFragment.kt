@@ -31,6 +31,8 @@ class ExerciseFragment : BaseFragment<FragmentMainExerciseBinding>(FragmentMainE
         binding.rvTotalExercise.adapter = ExerciseAdapter(activity as MainActivity)
         binding.rvTotalExercise.addItemDecoration(ExerciseDecoration(activity as MainActivity))
 
+        binding.viewAddInduce.tvDietEmpty.text = getString(R.string.exercise_empty)
+        binding.viewAddInduce.tvDietEmpty2.text = getString(R.string.exercise_empty2)
 
         presenter.tryGetExer()
     }
@@ -42,13 +44,19 @@ class ExerciseFragment : BaseFragment<FragmentMainExerciseBinding>(FragmentMainE
 
     override fun applyExer(isSuccess: Boolean, message: String, exer: ArrayList<RecommendExercise>?, userExer: ArrayList<UserExer>?) {
         if (isSuccess){
-            (binding.rvExercise.adapter as UserExerciseAdapter).applyData(userExer!!)
             (binding.rvTotalExercise.adapter as ExerciseAdapter).applyData(exer!!)
-            var totalCal = 0
-            for (exercise in userExer){
-                totalCal += exercise.calo
+            if (userExer == null || userExer.size == 0){
+                binding.viewAddInduce.layoutMain.visibility = View.VISIBLE
+                binding.viewExercise.tvCalorieValue.text = 0.toString()
+            }else {
+                binding.viewAddInduce.layoutMain.visibility = View.GONE
+                (binding.rvExercise.adapter as UserExerciseAdapter).applyData(userExer)
+                var totalCal = 0
+                for (exercise in userExer) {
+                    totalCal += exercise.calo
+                }
+                binding.viewExercise.tvCalorieValue.text = totalCal.toString()
             }
-            binding.viewExercise.tvCalorieValue.text = totalCal.toString()
         } else {
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
         }

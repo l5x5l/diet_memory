@@ -52,6 +52,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                         calendarFragment = CalendarFragment()
                         supportFragmentManager.beginTransaction().add(binding.layoutFragment.id, calendarFragment!!).commit()
                     } else {
+                        calendarFragment!!.hideDateData()
                         supportFragmentManager.beginTransaction().show(calendarFragment!!).commit()
                     }
                     currentFragment = calendarFragment!!

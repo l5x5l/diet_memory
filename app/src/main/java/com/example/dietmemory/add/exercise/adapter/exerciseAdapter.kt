@@ -16,7 +16,7 @@ class exerciseAdapter(private val context: Context, private val onclick : (Strin
 
     init {
         exerciseList.add(ExerciseRvData("걷기", 40))
-        exerciseList.add(ExerciseRvData("아령운동", 68))
+        exerciseList.add(ExerciseRvData("아령", 68))
         exerciseList.add(ExerciseRvData("스쿼트", 72))
         exerciseList.add(ExerciseRvData("턱걸이", 84))
         exerciseList.add(ExerciseRvData("훌라후프", 42))

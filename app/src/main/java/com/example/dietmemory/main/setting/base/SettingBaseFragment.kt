@@ -34,6 +34,7 @@ class SettingBaseFragment(private val inputView : SettingRvView) : BaseFragment<
                     if (response.isSuccessful){
                         if(response.body()!!.isSuccess) {
                             Toast.makeText(activity as MainActivity, "회원탈퇴가 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                            GlobalApplication.globalSharedPreferences.edit().remove(GlobalApplication.X_ACCESS_TOKEN).apply()
                             (activity as MainActivity).afterLogout()
                         } else {
                             Toast.makeText(activity as MainActivity, "회원탈퇴에 실패하였습니다, 잠시 뒤 시도해주세요", Toast.LENGTH_SHORT).show()

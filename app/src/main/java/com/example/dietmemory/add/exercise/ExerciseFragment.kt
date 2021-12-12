@@ -103,26 +103,30 @@ class ExerciseFragment : BaseFragment<FragmentAddExerciseBinding>(FragmentAddExe
 
     // firebase
     private fun saveToFirebase() {
-        val storage : FirebaseStorage = FirebaseStorage.getInstance()
-        val fileName = "IMAGE_${SimpleDateFormat("yyyymmdd_HHmmss", Locale.getDefault()).format(Date())}_.png"
-        val imageRef = storage.reference.child("images/").child(fileName)
+        if (binding.ivPhoto.drawable != null) {
+            val storage: FirebaseStorage = FirebaseStorage.getInstance()
+            val fileName = "IMAGE_${SimpleDateFormat("yyyymmdd_HHmmss", Locale.getDefault()).format(Date())}_.png"
+            val imageRef = storage.reference.child("images/").child(fileName)
 
-        val imageBitmap = (binding.ivPhoto.drawable as BitmapDrawable).bitmap
+            val imageBitmap = (binding.ivPhoto.drawable as BitmapDrawable).bitmap
 
-        val baos = ByteArrayOutputStream()
-        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val data = baos.toByteArray()
+            val baos = ByteArrayOutputStream()
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val data = baos.toByteArray()
 
-        val uploadTask = imageRef.putBytes(data)
-        (activity as AddActivity).showLoadingDialog()
-        uploadTask.addOnSuccessListener {
-            imageRef.downloadUrl.addOnSuccessListener {
-                presenter.tryPostExer(it.toString())
+            val uploadTask = imageRef.putBytes(data)
+            (activity as AddActivity).showLoadingDialog()
+            uploadTask.addOnSuccessListener {
+                imageRef.downloadUrl.addOnSuccessListener {
+                    presenter.tryPostExer(it.toString())
+                    (activity as AddActivity).dismissLoadingDialog()
+                }
+            }.addOnFailureListener {
+                Log.d("image upload", "failure")
                 (activity as AddActivity).dismissLoadingDialog()
             }
-        }.addOnFailureListener {
-            Log.d("image upload", "failure")
-            (activity as AddActivity).dismissLoadingDialog()
+        } else {
+            presenter.tryPostExer("null")
         }
     }
 
