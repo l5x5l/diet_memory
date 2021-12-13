@@ -57,7 +57,7 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
                 imageRef.downloadUrl.addOnSuccessListener{
                     Log.d("image upload", it.toString())
                     presenter.tryGetFoodRecord(it.toString())
-                    (activity as AddActivity).dismissLoadingDialog()
+                    //(activity as AddActivity).dismissLoadingDialog()
                 }
                 //presenter.tryGetFoodRecord(fileName)
             }.addOnFailureListener{
@@ -87,7 +87,7 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
                 imageRef.downloadUrl.addOnSuccessListener {
                     Log.d("image upload", it.toString())
                     presenter.tryGetFoodRecord(it.toString())
-                    (activity as AddActivity).dismissLoadingDialog()
+                    //(activity as AddActivity).dismissLoadingDialog()
                 }
             }.addOnFailureListener {
                 Log.d("image upload", "failure")
@@ -134,12 +134,17 @@ class FoodFragment : BaseFragment<FragmentAddFoodBinding>(FragmentAddFoodBinding
         super.onDestroyView()
     }
 
-    override fun applyFoodRecord(food: FoodRecordData) {
-        binding.etCalorie.setText(food.calo.toString())
-        binding.etFat.setText(food.fat.toString())
-        binding.etCarbohydrate.setText(food.carbo.toString())
-        binding.etProtein.setText(food.protein.toString())
-        binding.etFoodName.setText(food.foodName)
+    override fun applyFoodRecord(food: FoodRecordData?) {
+        if (food != null) {
+            binding.etCalorie.setText(food.calo.toString())
+            binding.etFat.setText(food.fat.toString())
+            binding.etCarbohydrate.setText(food.carbo.toString())
+            binding.etProtein.setText(food.protein.toString())
+            binding.etFoodName.setText(food.foodName)
+        } else {
+            Toast.makeText(activity as AddActivity, "음식 인식에 실패했습니다, 음식 이름을 직접 입력해주세요.", Toast.LENGTH_SHORT).show()
+        }
+        (activity as AddActivity).dismissLoadingDialog()
     }
 
     override fun applyPostAddFood(isSuccess: Boolean) {

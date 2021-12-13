@@ -98,7 +98,7 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         }
     }
 
-    fun applyFoodChange(){
+    fun applyChange(){
         presenter.tryGetTodayData()
     }
 

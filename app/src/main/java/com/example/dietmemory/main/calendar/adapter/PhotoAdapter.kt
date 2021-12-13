@@ -32,8 +32,10 @@ class PhotoAdapter(private val context : Context) : RecyclerView.Adapter<PhotoAd
         holder.mainLayout.setOnClickListener {
             if (holder.background.visibility == View.GONE){
                 holder.background.visibility = View.VISIBLE
+                holder.foodName.visibility = View.VISIBLE
             } else {
                 holder.background.visibility = View.GONE
+                holder.foodName.visibility = View.GONE
             }
         }
     }

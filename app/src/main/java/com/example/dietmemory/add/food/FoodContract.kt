@@ -6,7 +6,7 @@ import com.example.dietmemory.config.BasePresenter
 
 interface FoodContract {
     interface View{
-        fun applyFoodRecord(food : FoodRecordData)
+        fun applyFoodRecord(food : FoodRecordData?)
         fun applyPostAddFood(isSuccess : Boolean)
         fun applyFoodAuto(foods : ArrayList<String>)
         fun applyFoodInfo(food : FoodInfoResponse)

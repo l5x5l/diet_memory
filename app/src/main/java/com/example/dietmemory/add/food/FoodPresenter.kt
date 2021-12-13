@@ -24,15 +24,18 @@ class FoodPresenter : FoodContract.Presenter {
                         view!!.applyFoodRecord(response.body()!!.Food)
                         lastFoodIdx = response.body()!!.Food.idx
                     } else {
+                        view!!.applyFoodRecord(null)
                         Log.d("food record", "server's error?")
                     }
                 }
                 else {
+                    view!!.applyFoodRecord(null)
                     Log.d("food record", "onFailure")
                 }
             }
 
             override fun onFailure(call: Call<FoodRecordResponse>, t: Throwable) {
+                view!!.applyFoodRecord(null)
                 Log.d("food record onFailure", t.toString())
             }
 
