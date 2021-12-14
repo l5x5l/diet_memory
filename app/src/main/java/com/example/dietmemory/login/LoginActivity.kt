@@ -11,7 +11,7 @@ import com.example.dietmemory.signin.SigninActivity
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), LoginContract.View {
 
-    private val presenter = LoginPresenter()
+    private val presenter : LoginContract.Presenter = LoginPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

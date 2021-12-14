@@ -19,7 +19,7 @@ import kotlin.collections.ArrayList
 
 class CalendarFragment : BaseFragment<FragmentMainCalendarBinding>(FragmentMainCalendarBinding::bind, R.layout.fragment_main_calendar), CalendarContract.View {
 
-    private val presenter = CalendarPresenter()
+    private val presenter : CalendarContract.Presenter = CalendarPresenter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dietmemory.R
 import com.example.dietmemory.databinding.ItemMainCalendarBinding
 import com.example.dietmemory.main.calendar.BaseCalendar
-import com.example.dietmemory.main.calendar.CalendarPresenter
+import com.example.dietmemory.main.calendar.CalendarContract
 import java.util.*
 import kotlin.collections.ArrayList
 
-class CalendarAdapter(private val context : Context, private val presenter : CalendarPresenter) : RecyclerView.Adapter<CalendarAdapter.ViewHolder>(){
+class CalendarAdapter(private val context : Context, private val presenter : CalendarContract.Presenter) : RecyclerView.Adapter<CalendarAdapter.ViewHolder>(){
 
     private val dataList = ArrayList<Int>() // 해당 날에 대한 섭취 요약 데이터
     private val calendar = BaseCalendar() // 달력 자체에 대한 데이터이므로 이곳에 생성

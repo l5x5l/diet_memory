@@ -2,7 +2,6 @@ package com.example.dietmemory.main.exercise
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dietmemory.R
@@ -17,7 +16,7 @@ import com.example.dietmemory.main.exercise.models.UserExer
 
 class ExerciseFragment : BaseFragment<FragmentMainExerciseBinding>(FragmentMainExerciseBinding::bind, R.layout.fragment_main_exercise), ExerciseContract.View {
 
-    private val presenter = ExercisePresenter()
+    private val presenter : ExerciseContract.Presenter = ExercisePresenter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -17,7 +17,7 @@ import com.example.dietmemory.main.home.models.RecommendFood
 
 class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBinding::bind, R.layout.fragment_main_home), HomeContract.View {
 
-    private val presenter = HomePresenter()
+    private val presenter : HomeContract.Presenter = HomePresenter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
